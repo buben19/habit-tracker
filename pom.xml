@@ -7,6 +7,11 @@
     <groupId>cz.buben.learning.habbits</groupId>
     <artifactId>habit-tracker</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>habit-service</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
