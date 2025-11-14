@@ -13,6 +13,7 @@
         <module>habit-service</module>
         <module>checkin-service</module>
         <module>common</module>
+        <module>gateway</module>
     </modules>
 
     <properties>
