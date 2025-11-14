@@ -1,0 +1,13 @@
+###
+GET http://localhost:8080/api/habits
+Accept: application/json
+
+###
+POST http://localhost:8080/api/habits
+Content-Type: application/json
+
+{
+  "name": "Read a book",
+  "description": "Read at least 20 pages of a book every day",
+  "frequency": "daily"
+}
