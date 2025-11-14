@@ -1,0 +1,28 @@
+###
+GET http://localhost:8081/api/habits
+
+###
+GET http://localhost:8081/api/habits/1
+
+###
+POST http://localhost:8081/api/habits
+Content-Type: application/json
+
+{
+  "name": "Read a book",
+  "description": "Read at least 20 pages of a book every day",
+  "frequency": "daily"
+}
+
+###
+PUT http://localhost:8081/api/habits/1
+Content-Type: application/json
+
+{
+  "name": "Read a book",
+  "description": "Read at least 30 pages of a book every day",
+  "frequency": "daily"
+}
+
+###
+DELETE http://localhost:8081/api/habits/1
