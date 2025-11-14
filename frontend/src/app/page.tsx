@@ -1,16 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
+import { useAuth } from "@/app/ui/KeycloakProvider";
 
 export default function HomePage() {
   const [habits, setHabits] = useState<any[]>([]);
+  const { initialized, authenticated, login, logout, token } = useAuth();
 
   useEffect(() => {
-    apiFetch("/habits")
+    console.log("Fetching habits with token: ", token);
+    apiFetch("/habits", token)
       .then(setHabits)
       .catch((e) => console.error(e));
   }, []);
+
+  if (!initialized) {
+    return <div>Loading auth…</div>;
+  }
+
+  if (!authenticated) {
+    return (
+      <div>
+        <p>Not logged in.</p>
+        <button onClick={login}>Login with Keycloak</button>
+      </div>
+    );
+  }
 
   async function mark(habitId: number) {
     await apiFetch("/checkins", {
