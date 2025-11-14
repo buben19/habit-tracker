@@ -11,6 +11,7 @@
 
     <modules>
         <module>habit-service</module>
+        <module>checkin-service</module>
         <module>common</module>
     </modules>
 
