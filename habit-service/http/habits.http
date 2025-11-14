@@ -11,7 +11,7 @@ Content-Type: application/json
 {
   "name": "Read a book",
   "description": "Read at least 20 pages of a book every day",
-  "frequency": "daily"
+  "schedule": "daily"
 }
 
 ###
@@ -21,7 +21,7 @@ Content-Type: application/json
 {
   "name": "Read a book",
   "description": "Read at least 30 pages of a book every day",
-  "frequency": "daily"
+  "schedule": "daily"
 }
 
 ###
