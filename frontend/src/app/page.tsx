@@ -26,7 +26,9 @@ export default function HomePage() {
       <ul style={{ marginTop: 16 }}>
         {habits.map((h) => (
           <li key={h.id} style={{ display: "flex", gap: 12, marginBottom: 8 }}>
+            <span style={{ flex: 1 }}>{h.schedule}</span>
             <span style={{ flex: 1 }}>{h.name}</span>
+            <span style={{ flex: 1 }}>{h.description}</span>
             <button onClick={() => mark(h.id)}>Mark done</button>
           </li>
         ))}
