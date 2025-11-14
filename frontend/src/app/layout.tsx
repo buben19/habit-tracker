@@ -1,4 +1,5 @@
 import "./globals.css";
+import { KeycloakProvider } from "@/app/ui/KeycloakProvider";
 
 export const metadata = {
   title: 'Create Next App',
@@ -13,7 +14,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+      <KeycloakProvider>
         {children}
+      </KeycloakProvider>
       </body>
     </html>
   );
