@@ -35,6 +35,20 @@ services:
     volumes:
       - pgadmin_data:/var/lib/pgadmin
 
+  keycloak:
+    image: quay.io/keycloak/keycloak
+    container_name: keycloak
+    command: start-dev
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    ports:
+      - "8080:8080"
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   pgadmin_data:
+  keycloak_data:
