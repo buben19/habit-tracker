@@ -13,7 +13,7 @@ export default function HomePage() {
     apiFetch("/habits", token)
       .then(setHabits)
       .catch((e) => console.error(e));
-  }, []);
+  }, [ initialized, authenticated, token ]);
 
   if (!initialized) {
     return <div>Loading auth…</div>;
