@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["prometheus:9090"]
+
+  # Example - scrape your Spring Boot actuator
+  # - job_name: "habit-service"
+  #   metrics_path: "/actuator/prometheus"
+  #   static_configs:
+  #     - targets: ["host.docker.internal:8081"]
