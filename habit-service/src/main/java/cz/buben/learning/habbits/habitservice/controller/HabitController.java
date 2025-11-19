@@ -49,7 +49,7 @@ public class HabitController {
       description = "Retrieve a specific habit by its ID"
   )
   @GetMapping("/{id}")
-  public Habit getHabit(@RequestParam Long id) {
+  public Habit getHabit(@PathVariable Long id) {
     return getHabit.get(id);
   }
 
