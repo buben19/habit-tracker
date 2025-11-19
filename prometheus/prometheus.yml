@@ -6,6 +6,10 @@ scrape_configs:
     static_configs:
       - targets: ["prometheus:9090"]
 
+  - job_name: "postgres"
+    static_configs:
+      - targets: [ "postgres-exporter:9187" ]
+
   # Example - scrape your Spring Boot actuator
   # - job_name: "habit-service"
   #   metrics_path: "/actuator/prometheus"
