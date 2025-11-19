@@ -15,3 +15,7 @@ spring:
           issuer-uri: http://localhost:8888/realms/habit-realm
 server:
   port: 8082
+management:
+  tracing:
+    sampling:
+      probability: 1.0
