@@ -48,6 +48,12 @@ services:
       - keycloak_data:/opt/keycloak/data
     restart: unless-stopped
 
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+
 volumes:
   postgres_data:
   pgadmin_data:
