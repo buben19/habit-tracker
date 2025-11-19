@@ -3,15 +3,17 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { apiFetch } from "@/lib/api";
+import { useAuth } from "@/app/ui/KeycloakProvider";
 
 export default function NewHabitPage() {
   const [name, setName] = useState("");
   const [schedule, setSchedule] = useState("DAILY");
   const router = useRouter();
+  const { initialized, authenticated, login, logout, token } = useAuth();
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    await apiFetch("/habits", {
+    await apiFetch("/habits", token, {
       method: "POST",
       body: JSON.stringify({ name, schedule })
     });
