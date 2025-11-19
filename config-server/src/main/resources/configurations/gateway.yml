@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: habit-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/habits/**
+            - id: checkin-service
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/checkins/**
+      default-filters:
+        - AddResponseHeader=X-Gateway, HabitGateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8888/realms/habit-realm
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
