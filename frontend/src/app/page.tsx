@@ -29,7 +29,7 @@ export default function HomePage() {
   }
 
   async function mark(habitId: number) {
-    await apiFetch("/checkins", {
+    await apiFetch("/checkins", token, {
       method: "POST",
       body: JSON.stringify({ habitId })
     });
