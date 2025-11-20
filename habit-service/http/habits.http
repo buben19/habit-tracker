@@ -1,12 +1,15 @@
 ###
 GET http://localhost:8081/api/habits
+Authorization: Bearer {{$auth.token("habit")}}
 
 ###
 GET http://localhost:8081/api/habits/1
+Authorization: Bearer {{$auth.token("habit")}}
 
 ###
 POST http://localhost:8081/api/habits
 Content-Type: application/json
+Authorization: Bearer {{$auth.token("habit")}}
 
 {
   "name": "Read a book",
@@ -17,6 +20,7 @@ Content-Type: application/json
 ###
 PUT http://localhost:8081/api/habits/1
 Content-Type: application/json
+Authorization: Bearer {{$auth.token("habit")}}
 
 {
   "name": "Read a book",
@@ -26,3 +30,4 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:8081/api/habits/1
+Authorization: Bearer {{$auth.token("habit")}}

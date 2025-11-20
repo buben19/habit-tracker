@@ -12,7 +12,8 @@ public class Habit {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private Long userId;
+  @Column(nullable = false)
+  private String userId;
   private String name;
   private String description;
   private String schedule;
