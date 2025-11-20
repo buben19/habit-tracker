@@ -86,6 +86,11 @@ services:
     image: openzipkin/zipkin
     ports:
       - "9411:9411"
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "http://localhost:9411/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   prometheus:
     image: prom/prometheus:latest
