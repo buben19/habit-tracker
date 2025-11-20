@@ -13,6 +13,8 @@ import java.util.List;
 )
 public interface CheckinClient {
 
-  @GetMapping("/checkins/habit/{habitId}")
+  // TODO: Solve authentication between services
+  // TODO: Solve eureka registration between services
+  @GetMapping("/api/checkins/habit/{habitId}")
   List<CheckinDto> getCheckinsByHabitId(@PathVariable Long habitId);
 }
