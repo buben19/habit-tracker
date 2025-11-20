@@ -1,6 +1,6 @@
 package cz.buben.learning.habbits.habitservice.model.habits;
 
-import cz.buben.learning.habbits.habitservice.checkin.CheckinClient;
+import cz.buben.learning.habbits.habitservice.client.CheckinClient;
 import cz.buben.learning.habbits.habitservice.domain.Habit;
 import cz.buben.learning.habbits.habitservice.dto.CheckinDto;
 import cz.buben.learning.habbits.habitservice.dto.HabitCompleteResponse;
