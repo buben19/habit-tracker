@@ -1,6 +1,7 @@
 package cz.buben.learning.habbits.habitservice.controller;
 
 import cz.buben.learning.habbits.habitservice.domain.Habit;
+import cz.buben.learning.habbits.habitservice.dto.HabitsCompleteResponse;
 import cz.buben.learning.habbits.habitservice.model.habits.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -24,6 +25,7 @@ public class HabitController {
   private final CreateHabit createHabit;
   private final UpdateHabit updateHabit;
   private final DeleteHabit deleteHabit;
+  private final GetHabitWithCheckins getHabitWithCheckins;
 
   @Operation(
       summary = "Get all habits",
@@ -80,5 +82,10 @@ public class HabitController {
   public ResponseEntity<Void> deleteHabit(@PathVariable Long id) {
     deleteHabit.delete(id);
     return ResponseEntity.noContent().build();
+  }
+
+  @GetMapping("/with-checkins")
+  public HabitsCompleteResponse getHabitsWithCheckins() {
+    return getHabitWithCheckins.get();
   }
 }

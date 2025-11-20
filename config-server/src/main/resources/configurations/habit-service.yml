@@ -28,3 +28,8 @@ management:
   tracing:
     sampling:
       probability: 1.0
+
+application:
+  configuration:
+    checkin-service:
+        url: http://localhost:8082/api
