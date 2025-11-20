@@ -33,5 +33,5 @@ DELETE http://localhost:8081/api/habits/1
 Authorization: Bearer {{$auth.token("habit")}}
 
 ###
-GET http://localhost:8081/api/habits/with-checkins
+GET http://localhost:8080/api/habits/with-checkins
 Authorization: Bearer {{$auth.token("habit")}}

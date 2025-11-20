@@ -7,14 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(
-    name = "checkin-service",
-    url = "${application.configuration.checkin-service.url}"
-)
+@FeignClient("checkin-service")
 public interface CheckinClient {
 
   // TODO: Solve authentication between services
-  // TODO: Solve eureka registration between services
   @GetMapping("/api/checkins/habit/{habitId}")
   List<CheckinDto> getCheckinsByHabitId(@PathVariable Long habitId);
 }

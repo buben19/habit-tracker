@@ -22,7 +22,7 @@ spring:
           issuer-uri: http://localhost:8888/realms/habit-realm
 
 server:
-  port: 8082
+  port: 0
 
 management:
   tracing:
