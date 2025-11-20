@@ -13,6 +13,6 @@ import java.util.List;
 )
 public interface CheckinClient {
 
-  @GetMapping("/{habitId}")
+  @GetMapping("/checkins/habit/{habitId}")
   List<CheckinDto> getCheckinsByHabitId(@PathVariable Long habitId);
 }
