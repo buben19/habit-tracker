@@ -1,4 +1,4 @@
-package cz.buben.learning.habbits.habitservice.checkin;
+package cz.buben.learning.habbits.habitservice.client;
 
 import cz.buben.learning.habbits.habitservice.dto.CheckinDto;
 import org.springframework.cloud.openfeign.FeignClient;
