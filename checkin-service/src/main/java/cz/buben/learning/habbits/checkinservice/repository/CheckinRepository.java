@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CheckinRepository extends JpaRepository<Checkin, Long> {
   List<Checkin> findByUserIdAndDay(Long userId, java.time.LocalDate day);
+
+  List<Checkin> findByHabitId(Long habitId);
 }

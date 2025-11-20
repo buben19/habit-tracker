@@ -3,6 +3,7 @@ package cz.buben.learning.habbits.checkinservice.controller;
 import cz.buben.learning.habbits.checkinservice.domain.Checkin;
 import cz.buben.learning.habbits.checkinservice.model.Create;
 import cz.buben.learning.habbits.checkinservice.model.GetAll;
+import cz.buben.learning.habbits.checkinservice.model.FindCheckinsByByHabitId;
 import cz.buben.learning.habbits.checkinservice.model.Today;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,11 +17,17 @@ public class CheckinController {
 
   private final GetAll getAll;
   private final Create create;
+  private final FindCheckinsByByHabitId findCheckinsByByHabitId;
   private final Today today;
 
   @GetMapping
   public List<Checkin> getAllCheckins() {
     return getAll.getAllCheckins();
+  }
+
+  @GetMapping("/habit/{habitId}")
+  public List<Checkin> findCheckinsByByHabitId(@PathVariable Long habitId) {
+    return findCheckinsByByHabitId.findCheckinsByHabitId(habitId);
   }
 
   @PostMapping
