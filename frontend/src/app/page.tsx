@@ -54,7 +54,7 @@ export default function HomePage() {
           </tbody>
         </table>
       </div>
-      <Link className="btn btn-ghost text-xl" href="/habit/new">New</Link>
+      <Link className="btn btn-neutral text-xl" href="/habit/new">New</Link>
     </main>
   );
 }
