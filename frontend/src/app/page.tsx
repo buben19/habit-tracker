@@ -5,8 +5,16 @@ import { apiFetch } from "@/lib/api";
 import { useAuth } from "@/app/ui/KeycloakProvider";
 import Link from "next/link";
 
+type Habit = {
+  id: number;
+  userId: string;
+  schedule: string;
+  name: string;
+  description: string;
+}
+
 export default function HomePage() {
-  const [habits, setHabits] = useState<any[]>([]);
+  const [habits, setHabits] = useState<Habit[]>([]);
   const { authenticated, token } = useAuth();
 
   useEffect(() => {
