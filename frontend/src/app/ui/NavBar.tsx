@@ -3,7 +3,7 @@
 import { useAuth } from "@/app/ui/KeycloakProvider";
 
 export const NavBar = () => {
-  const { initialized, authenticated, login, logout, token } = useAuth();
+  const { authenticated, login, logout} = useAuth();
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -13,7 +13,7 @@ export const NavBar = () => {
         </button>
       </div>
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">Habit Tracker</a>
       </div>
       <div className="flex-none">
         <button className="btn btn-square btn-ghost">
