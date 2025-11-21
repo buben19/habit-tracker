@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
 import { useAuth } from "@/app/ui/KeycloakProvider";
+import Link from "next/link";
 
 export default function HomePage() {
   const [habits, setHabits] = useState<any[]>([]);
@@ -53,6 +54,7 @@ export default function HomePage() {
           </tbody>
         </table>
       </div>
+      <Link className="btn btn-ghost text-xl" href="/habit/new">New</Link>
     </main>
   );
 }

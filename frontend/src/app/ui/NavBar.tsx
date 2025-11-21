@@ -1,6 +1,7 @@
 "use client";
 
 import { useAuth } from "@/app/ui/KeycloakProvider";
+import Link from "next/link";
 
 export const NavBar = () => {
   const { authenticated, login, logout} = useAuth();
@@ -13,7 +14,7 @@ export const NavBar = () => {
         </button>
       </div>
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Habit Tracker</a>
+        <Link className="btn btn-ghost text-xl" href="/">Habit Tracker</Link>
       </div>
       <div className="flex-none">
         <button className="btn btn-square btn-ghost">
