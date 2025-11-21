@@ -1,12 +1,12 @@
 "use client";
 
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
 import { useAuth } from "@/app/ui/KeycloakProvider";
 
 export default function HomePage() {
   const [habits, setHabits] = useState<any[]>([]);
-  const { initialized, authenticated, login, logout, token } = useAuth();
+  const { authenticated, token } = useAuth();
 
   useEffect(() => {
     if (authenticated) {
@@ -26,7 +26,7 @@ export default function HomePage() {
 
   return (
     <main>
-      <h1>Today&apos;s habits</h1>
+      <h1 className="flex-1 text-xl">Today&apos;s habits</h1>
       <div className="relative bg-neutral-primary-soft shadow-xs">
         <table className="table">
           <thead className="bg-neutral-secondary-soft">
@@ -39,17 +39,17 @@ export default function HomePage() {
           </tr>
           </thead>
           <tbody>
-          {habits.map(habit => (
-            <tr key={habit.id} className="hover:bg-base-300">
-              <td style={{ flex: 1 }}>{habit.userId}</td>
-              <td style={{ flex: 1 }}>{habit.schedule}</td>
-              <td style={{ flex: 1 }}>{habit.name}</td>
-              <td style={{ flex: 1 }}>{habit.description}</td>
-              <td>
-                <button className="btn btn-neutral" onClick={() => mark(habit.id)}>Mark done</button>
-              </td>
-            </tr>
-          ))}
+            {habits.map(habit => (
+              <tr key={habit.id} className="hover:bg-base-300">
+                <td style={{ flex: 1 }}>{habit.userId}</td>
+                <td style={{ flex: 1 }}>{habit.schedule}</td>
+                <td style={{ flex: 1 }}>{habit.name}</td>
+                <td style={{ flex: 1 }}>{habit.description}</td>
+                <td>
+                  <button className="btn btn-neutral" onClick={() => mark(habit.id)}>Mark done</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
