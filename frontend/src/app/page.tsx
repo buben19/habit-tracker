@@ -42,12 +42,12 @@ export default function HomePage() {
           <tbody>
             {habits.map(habit => (
               <tr key={habit.id} className="hover:bg-base-300">
-                <td style={{ flex: 1 }}>{habit.userId}</td>
-                <td style={{ flex: 1 }}>{habit.schedule}</td>
-                <td style={{ flex: 1 }}>{habit.name}</td>
-                <td style={{ flex: 1 }}>{habit.description}</td>
+                <td>{habit.userId}</td>
+                <td>{habit.schedule}</td>
+                <td>{habit.name}</td>
+                <td>{habit.description}</td>
                 <td>
-                  <button className="btn btn-neutral" onClick={() => mark(habit.id)}>Mark done</button>
+                  <button className="btn btn-neutral btn-xs" onClick={() => mark(habit.id)}>Mark done</button>
                 </td>
               </tr>
             ))}
