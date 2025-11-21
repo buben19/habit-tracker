@@ -1,6 +1,6 @@
 import "./globals.css";
-import { KeycloakProvider } from "@/app/ui/KeycloakProvider";
-import { NavBar } from "@/app/ui/NavBar";
+import { KeycloakProvider } from "@/ui/KeycloakProvider";
+import { NavBar } from "@/ui/NavBar";
 
 export const metadata = {
   title: 'Create Next App',

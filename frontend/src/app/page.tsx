@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
-import { useAuth } from "@/app/ui/KeycloakProvider";
+import { useAuth } from "@/ui/KeycloakProvider";
 import Link from "next/link";
 
 type Habit = {

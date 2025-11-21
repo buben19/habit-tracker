@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { apiFetch } from "@/lib/api";
-import { useAuth } from "@/app/ui/KeycloakProvider";
+import { useAuth } from "@/ui/KeycloakProvider";
 
 export default function NewHabitPage() {
   const [name, setName] = useState("");
