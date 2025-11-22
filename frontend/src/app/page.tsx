@@ -55,7 +55,9 @@ export default function HomePage() {
                 <td>{habit.name}</td>
                 <td>{habit.description}</td>
                 <td>
-                  <Button onClick={() => mark(habit.id)}>Mark done</Button>
+                  <div className="d-grid gap-2">
+                    <Button variant="secondary" size="sm" onClick={ () => mark(habit.id) }><i className="bi bi-check"></i></Button>
+                  </div>
                 </td>
               </tr>
             ))}
