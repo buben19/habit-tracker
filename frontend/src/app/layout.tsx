@@ -1,6 +1,7 @@
 import "./globals.css";
 import { KeycloakProvider } from "@/ui/KeycloakProvider";
 import { NavBar } from "@/ui/NavBar";
+import { Container } from "react-bootstrap";
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,10 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <KeycloakProvider>
-        <NavBar />
-        {children}
-      </KeycloakProvider>
+        <Container>
+          <KeycloakProvider>
+            <NavBar />
+            {children}
+          </KeycloakProvider>
+        </Container>
       </body>
     </html>
   );

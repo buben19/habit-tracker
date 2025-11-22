@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
 import { useAuth } from "@/ui/KeycloakProvider";
 import Link from "next/link";
+import { Button, Table } from "react-bootstrap";
 
 type Habit = {
   id: number;
@@ -35,10 +36,10 @@ export default function HomePage() {
 
   return (
     <main>
-      <h1 className="flex-1 text-xl">Today&apos;s habits</h1>
-      <div className="relative bg-neutral-primary-soft shadow-xs">
-        <table className="table">
-          <thead className="bg-neutral-secondary-soft">
+      <h1>Today&apos;s habits</h1>
+      <div>
+        <Table striped bordered hover>
+          <thead>
           <tr>
             <th>Habit ID</th>
             <th>Schedule</th>
@@ -49,20 +50,20 @@ export default function HomePage() {
           </thead>
           <tbody>
             {habits.map(habit => (
-              <tr key={habit.id} className="hover:bg-base-300">
+              <tr key={habit.id}>
                 <td>{habit.userId}</td>
                 <td>{habit.schedule}</td>
                 <td>{habit.name}</td>
                 <td>{habit.description}</td>
                 <td>
-                  <button className="btn btn-neutral btn-xs" onClick={() => mark(habit.id)}>Mark done</button>
+                  <Button onClick={() => mark(habit.id)}>Mark done</Button>
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       </div>
-      <Link className="btn btn-neutral text-xl" href="/habit/new">New</Link>
+      <Link type="button" className="btn btn-primary" href="/habit/new">New</Link>
     </main>
   );
 }
