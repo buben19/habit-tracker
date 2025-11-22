@@ -16,9 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Container>
+      <NavBar />
+      <Container>
           <KeycloakProvider>
-            <NavBar />
             {children}
           </KeycloakProvider>
         </Container>
