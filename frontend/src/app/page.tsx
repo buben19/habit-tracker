@@ -11,7 +11,7 @@ type Habit = {
   userId: string;
   schedule: string;
   name: string;
-  description: string;
+  description: string | null;
 }
 
 type Checkin = {
@@ -23,7 +23,7 @@ type Checkin = {
 
 type HabitWithCheckins = {
   habit: Habit;
-  checkin: Checkin[];
+  checkin: Checkin[] | null;
 };
 
 type HabitResponse = {
