@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/ui/KeycloakProvider";
-import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 export const NavBar = () => {
   const { authenticated, login, logout} = useAuth();
@@ -28,13 +28,11 @@ export const NavBar = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        <Form>
-          {
-            authenticated
-              ? <Button onClick={logout}>Logout</Button>
-              : <Button onClick={login}>Login</Button>
-          }
-        </Form>
+        {
+          authenticated
+            ? <Button onClick={logout}>Logout</Button>
+            : <Button onClick={login}>Login</Button>
+        }
       </Container>
     </Navbar>
   )
