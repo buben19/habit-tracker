@@ -31,7 +31,6 @@ export default function HomePage() {
       method: "POST",
       body: JSON.stringify({ habitId })
     });
-    alert("Marked!");
   }
 
   return (
