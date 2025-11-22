@@ -1,6 +1,7 @@
 package cz.buben.learning.habbits.habitservice.controller;
 
 import cz.buben.learning.habbits.habitservice.domain.Habit;
+import cz.buben.learning.habbits.habitservice.dto.HabitDto;
 import cz.buben.learning.habbits.habitservice.dto.HabitsCompleteResponse;
 import cz.buben.learning.habbits.habitservice.model.habits.*;
 import io.swagger.v3.oas.annotations.Operation;
@@ -60,7 +61,7 @@ public class HabitController {
       description = "Create a new habit with the provided details"
   )
   @PostMapping
-  public Habit createHabit(@RequestBody Habit habit) {
+  public Habit createHabit(@RequestBody HabitDto habit) {
     return createHabit.create(habit);
   }
 
