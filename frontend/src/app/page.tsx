@@ -27,10 +27,10 @@ export default function HomePage() {
   }, [ authenticated, token ]);
 
   async function mark(habitId: number) {
-    await apiFetch("/checkins", token, {
+    const checkinResponse = await apiFetch(`/checkins/today/${habitId}`, token, {
       method: "POST",
-      body: JSON.stringify({ habitId })
     });
+    console.log("Checkin response: ", JSON.stringify(checkinResponse));
   }
 
   return (

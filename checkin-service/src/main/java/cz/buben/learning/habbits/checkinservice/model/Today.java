@@ -15,7 +15,7 @@ public class Today {
   private final CheckinRepository checkinRepository;
 
   @Transactional
-  public List<Checkin> getTodayCheckins(Long userId) {
+  public List<Checkin> getTodayCheckins(String userId) {
     return checkinRepository.findByUserIdAndDay(userId, java.time.LocalDate.now());
   }
 }
