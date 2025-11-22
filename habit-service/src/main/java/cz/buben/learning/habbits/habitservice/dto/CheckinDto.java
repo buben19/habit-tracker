@@ -11,6 +11,6 @@ public class CheckinDto {
 
   private Long id;
   private Long habitId;
-  private Long userId;
+  private String userId;
   private LocalDate day;
 }
