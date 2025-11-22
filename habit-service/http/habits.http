@@ -3,11 +3,11 @@ GET http://localhost:8081/api/habits
 Authorization: Bearer {{$auth.token("habit")}}
 
 ###
-GET http://localhost:8081/api/habits/1
+GET http://localhost:8080/api/habits/1
 Authorization: Bearer {{$auth.token("habit")}}
 
 ###
-POST http://localhost:8081/api/habits
+POST http://localhost:8080/api/habits
 Content-Type: application/json
 Authorization: Bearer {{$auth.token("habit")}}
 
@@ -18,7 +18,7 @@ Authorization: Bearer {{$auth.token("habit")}}
 }
 
 ###
-PUT http://localhost:8081/api/habits/1
+PUT http://localhost:8080/api/habits/1
 Content-Type: application/json
 Authorization: Bearer {{$auth.token("habit")}}
 
@@ -29,7 +29,7 @@ Authorization: Bearer {{$auth.token("habit")}}
 }
 
 ###
-DELETE http://localhost:8081/api/habits/1
+DELETE http://localhost:8080/api/habits/1
 Authorization: Bearer {{$auth.token("habit")}}
 
 ###
