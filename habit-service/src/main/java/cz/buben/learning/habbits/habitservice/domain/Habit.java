@@ -14,6 +14,8 @@ public class Habit {
 
   @Column(nullable = false)
   private String userId;
+
+  @Column(nullable = false)
   private String name;
   private String description;
   private String schedule;
