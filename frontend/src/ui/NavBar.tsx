@@ -1,31 +1,41 @@
 "use client";
 
 import { useAuth } from "@/ui/KeycloakProvider";
-import Link from "next/link";
+import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 export const NavBar = () => {
   const { authenticated, login, logout} = useAuth();
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="flex-none">
-        <button className="btn btn-square btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block h-5 w-5 stroke-current"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg>
-        </button>
-      </div>
-      <div className="flex-1">
-        <Link className="btn btn-ghost text-xl" href="/public">Habit Tracker</Link>
-      </div>
-      <div className="flex-none">
-        <button className="btn btn-square btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block h-5 w-5 stroke-current"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path> </svg>
-        </button>
-      </div>
-      <div className="flex-none">
-        {authenticated
-          ? <button className="btn" onClick={logout}>Logout</button>
-          : <button className="btn" onClick={login}>Login</button>}
-      </div>
-    </div>
+    <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+      <Container>
+        <Navbar.Brand href="#home">Habit Tracker</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+        <Form>
+          {
+            authenticated
+              ? <Button onClick={logout}>Logout</Button>
+              : <Button onClick={login}>Login</Button>
+          }
+        </Form>
+      </Container>
+    </Navbar>
   )
 }
