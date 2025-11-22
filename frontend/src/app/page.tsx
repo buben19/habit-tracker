@@ -14,14 +14,30 @@ type Habit = {
   description: string;
 }
 
+type Checkin = {
+  id: number;
+  userId: string;
+  habitId: number;
+  date: string
+}
+
+type HabitWithCheckins = {
+  habit: Habit;
+  checkin: Checkin[];
+};
+
+type HabitResponse = {
+  habits: HabitWithCheckins[];
+}
+
 export default function HomePage() {
-  const [habits, setHabits] = useState<Habit[]>([]);
+  const [habitResponse, setHabitResponse] = useState<HabitResponse>({ habits: [] });
   const { authenticated, token } = useAuth();
 
   useEffect(() => {
     if (authenticated) {
-      apiFetch("/habits", token)
-        .then(setHabits)
+      apiFetch("/habits/with-checkins", token)
+        .then(setHabitResponse)
         .catch((e) => console.error(e));
     }
   }, [ authenticated, token ]);
@@ -44,19 +60,21 @@ export default function HomePage() {
             <th>Schedule</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Checkins</th>
             <th>Checkin</th>
           </tr>
           </thead>
           <tbody>
-            {habits.map(habit => (
-              <tr key={habit.id}>
-                <td>{habit.userId}</td>
-                <td>{habit.schedule}</td>
-                <td>{habit.name}</td>
-                <td>{habit.description}</td>
+            {habitResponse.habits.map(habit => (
+              <tr key={habit.habit.id}>
+                <td>{habit.habit.userId}</td>
+                <td>{habit.habit.schedule}</td>
+                <td>{habit.habit.name}</td>
+                <td>{habit.habit.description}</td>
+                <td>{habit.checkin?.length}</td>
                 <td>
                   <div className="d-grid gap-2">
-                    <Button variant="secondary" size="sm" onClick={ () => mark(habit.id) }><i className="bi bi-check"></i></Button>
+                    <Button variant="secondary" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-check"></i></Button>
                   </div>
                 </td>
               </tr>
