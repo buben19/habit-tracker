@@ -1,9 +1,9 @@
 package cz.buben.learning.habbits.habitservice.model.habits;
 
 import cz.buben.learning.habbits.habitservice.domain.Habit;
-import cz.buben.learning.habbits.habitservice.dto.HabitDto;
 import cz.buben.learning.habbits.habitservice.mapping.HabitMapper;
 import cz.buben.learning.habbits.habitservice.repository.HabitRepository;
+import cz.buben.learning.habits.common.dto.HabitDto;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

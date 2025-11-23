@@ -9,8 +9,6 @@ import cz.buben.learning.habbits.habitservice.dto.HabitsCompleteResponse;
 import cz.buben.learning.habbits.habitservice.repository.HabitRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
