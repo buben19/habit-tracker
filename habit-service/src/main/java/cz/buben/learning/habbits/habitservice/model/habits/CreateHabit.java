@@ -18,11 +18,12 @@ public class CreateHabit {
   private final HabitMapper habitMapper;
 
   @Transactional
-  public Habit create(HabitDto habitDto) {
+  public HabitDto create(HabitDto habitDto) {
     Habit habit = habitMapper.dtoToEntity(habitDto);
     userIdProvider.getCurrentUserId().ifPresentOrElse(habit::setUserId, () -> {;
       throw new RuntimeException("Cannot create habit - no authenticated user found");
     });
-    return habitRepository.save(habit);
+    Habit save = habitRepository.save(habit);
+    return habitMapper.entityToDto(save);
   }
 }

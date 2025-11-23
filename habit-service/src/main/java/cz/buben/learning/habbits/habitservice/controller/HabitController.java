@@ -1,6 +1,5 @@
 package cz.buben.learning.habbits.habitservice.controller;
 
-import cz.buben.learning.habbits.habitservice.domain.Habit;
 import cz.buben.learning.habbits.habitservice.dto.HabitDto;
 import cz.buben.learning.habbits.habitservice.dto.HabitsCompleteResponse;
 import cz.buben.learning.habbits.habitservice.model.habits.*;
@@ -43,7 +42,7 @@ public class HabitController {
       }
   )
   @GetMapping
-  public List<Habit> getHabits() {
+  public List<HabitDto> getHabits() {
     return getHabits.all();
   }
 
@@ -52,7 +51,7 @@ public class HabitController {
       description = "Retrieve a specific habit by its ID"
   )
   @GetMapping("/{id}")
-  public Habit getHabit(@PathVariable Long id) {
+  public HabitDto getHabit(@PathVariable Long id) {
     return getHabit.get(id);
   }
 
@@ -61,7 +60,7 @@ public class HabitController {
       description = "Create a new habit with the provided details"
   )
   @PostMapping
-  public Habit createHabit(@RequestBody HabitDto habit) {
+  public HabitDto createHabit(@RequestBody HabitDto habit) {
     return createHabit.create(habit);
   }
 
@@ -70,8 +69,8 @@ public class HabitController {
       description = "Update the details of an existing habit"
   )
   @PutMapping("/{id}")
-  public ResponseEntity<Habit> updateHabit(@RequestBody Habit habit) {
-    Habit updatedHabit = updateHabit.update(habit);
+  public ResponseEntity<HabitDto> updateHabit(@RequestBody HabitDto habit) {
+    HabitDto updatedHabit = updateHabit.update(habit);
     return ResponseEntity.ok(updatedHabit);
   }
 
