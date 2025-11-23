@@ -1,22 +1,23 @@
 package cz.buben.learning.habits.common.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class HabitDto {
+public class CheckinDto {
 
   private Long id;
-  private String userId;
 
-  @NotBlank(message = "Name is mandatory")
-  private String name;
-  private String description;
-  private String schedule;
+  @NotNull(message = "Habit ID is mandatory")
+  private Long habitId;
+  private String userId;
+  private LocalDate day;
 }

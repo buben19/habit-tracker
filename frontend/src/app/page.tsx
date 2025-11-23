@@ -56,7 +56,7 @@ export default function HomePage() {
         <Table striped bordered hover>
           <thead>
           <tr>
-            <th>Habit ID</th>
+            <th>User ID</th>
             <th>Schedule</th>
             <th>Name</th>
             <th>Description</th>

@@ -1,7 +1,10 @@
 package cz.buben.learning.habbits.checkinservice.model;
 
+import cz.buben.learning.habbits.checkinservice.UserIdProvider;
 import cz.buben.learning.habbits.checkinservice.domain.Checkin;
+import cz.buben.learning.habbits.checkinservice.mapping.CheckinMapper;
 import cz.buben.learning.habbits.checkinservice.repository.CheckinRepository;
+import cz.buben.learning.habits.common.dto.CheckinDto;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -15,20 +18,20 @@ import java.time.LocalDate;
 public class CreateTodayCheckin {
 
   private final CheckinRepository checkinRepository;
+  private final UserIdProvider userIdProvider;
+  private final CheckinMapper checkinMapper;
 
   @Transactional
-  public Checkin createTodayCheckin(Long habitId) {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    if (authentication != null) {
-      String userId = authentication.getName();
-      Checkin checkin = Checkin.builder()
-          .habitId(habitId)
-          .userId(userId)
-          .day(LocalDate.now())
-          .build();
-      return checkinRepository.save(checkin);
-    } else {
-      throw new RuntimeException("User not authenticated");
-    }
+  public CheckinDto createTodayCheckin(Long habitId) {
+    String userId = userIdProvider.getCurrentUserId().orElseThrow(
+        () -> new RuntimeException("User not authenticated"));
+
+    Checkin checkin = Checkin.builder()
+        .habitId(habitId)
+        .userId(userId)
+        .day(LocalDate.now())
+        .build();
+    Checkin saved = checkinRepository.save(checkin);
+    return checkinMapper.entityToDto(saved);
   }
 }

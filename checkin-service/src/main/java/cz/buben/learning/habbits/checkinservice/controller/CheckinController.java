@@ -2,6 +2,8 @@ package cz.buben.learning.habbits.checkinservice.controller;
 
 import cz.buben.learning.habbits.checkinservice.domain.Checkin;
 import cz.buben.learning.habbits.checkinservice.model.*;
+import cz.buben.learning.habits.common.dto.CheckinDto;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,27 +21,27 @@ public class CheckinController {
   private final CreateTodayCheckin createTodayCheckin;
 
   @GetMapping
-  public List<Checkin> getAllCheckins() {
+  public List<CheckinDto> getAllCheckins() {
     return getAll.getAllCheckins();
   }
 
   @GetMapping("/habit/{habitId}")
-  public List<Checkin> findCheckinsByByHabitId(@PathVariable Long habitId) {
+  public List<CheckinDto> findCheckinsByByHabitId(@PathVariable Long habitId) {
     return findCheckinsByByHabitId.findCheckinsByHabitId(habitId);
   }
 
   @PostMapping
-  public Checkin create(@RequestBody Checkin checkin) {
+  public CheckinDto create(@Valid @RequestBody CheckinDto checkin) {
     return create.createCheckin(checkin);
   }
 
   @GetMapping("/today")
-  public List<Checkin> today(@RequestParam String userId) {
+  public List<CheckinDto> today(@RequestParam String userId) {
     return today.getTodayCheckins(userId);
   }
 
   @PostMapping("/today/{habitId}")
-  public Checkin createTodayCheckin(@PathVariable Long habitId) {
+  public CheckinDto createTodayCheckin(@PathVariable Long habitId) {
     return createTodayCheckin.createTodayCheckin(habitId);
   }
 }
