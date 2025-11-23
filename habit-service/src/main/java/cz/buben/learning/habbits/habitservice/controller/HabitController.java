@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -60,7 +61,7 @@ public class HabitController {
       description = "Create a new habit with the provided details"
   )
   @PostMapping
-  public HabitDto createHabit(@RequestBody HabitDto habit) {
+  public HabitDto createHabit(@Valid @RequestBody HabitDto habit) {
     return createHabit.create(habit);
   }
 
@@ -69,7 +70,7 @@ public class HabitController {
       description = "Update the details of an existing habit"
   )
   @PutMapping("/{id}")
-  public ResponseEntity<HabitDto> updateHabit(@RequestBody HabitDto habit) {
+  public ResponseEntity<HabitDto> updateHabit(@Valid @RequestBody HabitDto habit) {
     HabitDto updatedHabit = updateHabit.update(habit);
     return ResponseEntity.ok(updatedHabit);
   }
