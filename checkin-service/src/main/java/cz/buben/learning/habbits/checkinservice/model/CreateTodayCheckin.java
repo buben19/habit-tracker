@@ -7,8 +7,9 @@ import cz.buben.learning.habbits.checkinservice.repository.CheckinRepository;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,9 +18,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class CreateTodayCheckin {
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(Create.class);
+
+  private static final String TOPIC = "checkin";
+
   private final CheckinRepository checkinRepository;
   private final UserIdProvider userIdProvider;
   private final CheckinMapper checkinMapper;
+  private final KafkaTemplate<String, CheckinDto> kafkaTemplate;
 
   @Transactional
   public CheckinDto createTodayCheckin(Long habitId) {
@@ -32,6 +38,9 @@ public class CreateTodayCheckin {
         .day(LocalDate.now())
         .build();
     Checkin saved = checkinRepository.save(checkin);
-    return checkinMapper.entityToDto(saved);
+    CheckinDto checkinDto = checkinMapper.entityToDto(saved);
+    LOGGER.info("Sending checkin to Kafka topic: " + checkinDto);
+    kafkaTemplate.send(TOPIC, checkinDto);
+    return checkinDto;
   }
 }

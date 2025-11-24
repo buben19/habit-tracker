@@ -8,6 +8,7 @@
  - 📊 http://localhost:3001/ - Grafana server
  - 📈 http://localhost:9090/ - Prometheus server
  - 📚 http://localhost:5540/ - RedisInsight
+ - 👂 http://localhost:8090/ - Kafka UI
 
 ## Description ✨
 Habit Tracker is a microservices-based application for recording and visualizing personal habits over time. It uses a React frontend and a Java Spring Boot backend (Spring Cloud ecosystem) and integrates infrastructure services for service discovery, tracing, monitoring and authentication.
