@@ -26,7 +26,7 @@ public class GetHabitWithCheckins {
   private final HabitMapper habitMapper;
 
   @Transactional
-  public HabitsCompleteResponse get() {
+  public HabitsCompleteResponse getHabitsWithCheckins() {
     String userId = userIdProvider.getCurrentUserId().orElseThrow(
         () -> new RuntimeException("Cannot get habits - no authenticated user found"));
     List<Habit> habits = habitRepository.findByUserId(userId);

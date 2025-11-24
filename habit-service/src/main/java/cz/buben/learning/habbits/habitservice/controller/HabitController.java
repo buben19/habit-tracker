@@ -87,6 +87,6 @@ public class HabitController {
 
   @GetMapping("/with-checkins")
   public HabitsCompleteResponse getHabitsWithCheckins() {
-    return getHabitWithCheckins.get();
+    return getHabitWithCheckins.getHabitsWithCheckins();
   }
 }
