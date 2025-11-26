@@ -25,10 +25,10 @@
         <tag/>
         <url/>
     </scm>
+
     <properties>
-        <java.version>21</java.version>
-        <spring-cloud.version>2025.0.0</spring-cloud.version>
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
