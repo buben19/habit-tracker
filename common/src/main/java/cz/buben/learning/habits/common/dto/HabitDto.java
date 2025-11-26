@@ -14,6 +14,7 @@ public class HabitDto {
 
   private Long id;
   private String userId;
+  private String userName;
 
   @NotBlank(message = "Name is mandatory")
   private String name;

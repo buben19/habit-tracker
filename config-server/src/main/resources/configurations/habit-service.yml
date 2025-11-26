@@ -32,7 +32,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8888/realms/habit-realm
+          issuer-uri: ${application.configuration.keycloak.url}/realms/${application.configuration.keycloak.realm}
 
 server:
   port: 0
@@ -42,3 +42,9 @@ management:
     sampling:
       probability: 1.0
     enabled: true
+
+application:
+  configuration:
+    keycloak:
+      realm: habit-realm
+      url: http://localhost:8888

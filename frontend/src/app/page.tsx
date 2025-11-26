@@ -9,6 +9,7 @@ import { Button, Table } from "react-bootstrap";
 type Habit = {
   id: number;
   userId: string;
+  userName: string;
   schedule: string;
   name: string;
   description: string | null;
@@ -56,7 +57,7 @@ export default function HomePage() {
         <Table striped bordered hover>
           <thead>
           <tr>
-            <th>User ID</th>
+            <th>User</th>
             <th>Schedule</th>
             <th>Name</th>
             <th>Description</th>
@@ -67,7 +68,7 @@ export default function HomePage() {
           <tbody>
             {habitResponse.habits.map(habit => (
               <tr key={habit.habit.id}>
-                <td>{habit.habit.userId}</td>
+                <td>{habit.habit.userName}</td>
                 <td>{habit.habit.schedule}</td>
                 <td>{habit.habit.name}</td>
                 <td>{habit.habit.description}</td>
