@@ -1,0 +1,9 @@
+###
+GET http://localhost:8888/admin/realms/habit-realm/users
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("habit")}}
+
+###
+GET http://localhost:8888/admin/realms/habit-realm/users/c25bab39-814d-4c44-a861-90360ffb88ca
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("habit")}}
