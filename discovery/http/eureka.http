@@ -1,0 +1,7 @@
+###
+GET http://localhost:8761/eureka/apps
+Accept: application/json
+
+###
+GET http://localhost:8761/eureka/apps/habit-service
+Accept: application/json
