@@ -40,3 +40,6 @@ management:
     sampling:
       probability: 1.0
     enabled: true
+  health:
+    eureka:
+      enabled: true
