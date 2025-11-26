@@ -1,5 +1,3 @@
-import { useAuth } from "@/ui/KeycloakProvider";
-
 export async function apiFetch(path: string, token?: string, init: RequestInit = {}) {
   const headers: any = {
     "Content-Type": "application/json",

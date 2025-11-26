@@ -1,6 +1,5 @@
 package cz.buben.learning.habbits.checkinservice.controller;
 
-import cz.buben.learning.habbits.checkinservice.domain.Checkin;
 import cz.buben.learning.habbits.checkinservice.model.*;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import jakarta.validation.Valid;
