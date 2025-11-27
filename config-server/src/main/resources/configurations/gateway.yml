@@ -1,6 +1,10 @@
 eureka:
   instance:
     hostname: localhost
+    metadata-map:
+      metrics.path: /actuator/prometheus
+      health.path: /actuator/health
+      management.context-path: /actuator
   client:
     service-url:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka/
@@ -65,3 +69,10 @@ management:
   health:
     eureka:
       enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
