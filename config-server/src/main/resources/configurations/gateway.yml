@@ -4,12 +4,17 @@ eureka:
   client:
     service-url:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+    registryFetchIntervalSeconds: 5
 
 server:
   port: 8080
 
 spring:
   cloud:
+    loadbalancer:
+      cache:
+        ttl: 5s                       # or even disable cache in dev:
+        # enabled: false
     gateway:
       server:
         webmvc:
@@ -22,12 +27,29 @@ spring:
               uri: lb://checkin-service
               predicates:
                 - Path=/api/checkins/**
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      default-filters:
-        - AddResponseHeader=X-Gateway, HabitGateway
+        discovery:
+          locator:
+            enabled: true
+            lower-case-service-id: true
+        default-filters:
+          - name: Retry
+            args:
+              retries: 3
+              methods: GET
+              statuses:
+                - SERVICE_UNAVAILABLE      # 503
+                - GATEWAY_TIMEOUT          # 504
+                - BAD_GATEWAY              # 502
+              exceptions:
+                - java.io.IOException      # connection reset, etc.
+                - org.springframework.cloud.gateway.support.TimeoutException
+                - org.apache.hc.client5.http.HttpHostConnectException
+              backoff:
+                firstBackoff: 200ms
+                maxBackoff: 2s
+                factor: 2
+                basedOnPreviousValue: true
+          - AddResponseHeader=X-Gateway, HabitGateway
   security:
     oauth2:
       resourceserver:
