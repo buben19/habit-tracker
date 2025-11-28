@@ -9,6 +9,7 @@
 - 📈 http://localhost:9090/ - Prometheus server
 - 📚 http://localhost:5540/ - RedisInsight
 - 👂 http://localhost:8090/ - Kafka UI
+- 🐘 http://localhost:5050/ - pgAdmin (PostgreSQL)
 
 ## Description ✨
 Habit Tracker is a microservices-based application for recording and visualizing personal habits over time. It uses a React frontend and a Java Spring Boot backend (Spring Cloud ecosystem) and integrates infrastructure services for service discovery, tracing, monitoring and authentication.
@@ -16,6 +17,7 @@ Habit Tracker is a microservices-based application for recording and visualizing
 ## Technology stack 🧰
 - Frontend: React using Next.js ⚛️
 - Backend: Java + Spring Boot, Spring Cloud (Eureka, Gateway) ☕
+- Database: PostgreSQL 🐘
 - Auth: Keycloak 🔐
 - Tracing: Zipkin 🔎
 - Monitoring: Prometheus + Grafana 📈📊
@@ -25,7 +27,6 @@ Habit Tracker is a microservices-based application for recording and visualizing
 ## Prerequisites ⚙️
 - Node.js + npm or yarn (for frontend)
 - Java 21 (for backend)
-- Maven (backend build)
 - Docker & docker-compose (recommended for local infra)
 
 ## Quick start (local development) ▶️
