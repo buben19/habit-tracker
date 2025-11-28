@@ -49,12 +49,13 @@ Habit Tracker is a microservices-based application for recording and visualizing
    - Grafana: http://localhost:3001/ 📊
 
 ## Project structure 📁
-- `config-server/`   — Spring Cloud Config server
-- `discovery/`       — Eureka service registry
-- `gateway/`         — API Gateway
-- `habit-service/`   — Habit tracking service
-- `checkin-service/` — Check-in service
-- `frontend/`        — React app
+- Business logic
+  - `config-server/`     — Spring Cloud Config server
+  - `discovery/`         — Eureka service registry
+  - `gateway/`           — API Gateway
+  - `habit-service/`     — Habit tracking service
+  - `checkin-service/`   — Check-in service
+  - `frontend/`          — React app
 - Configuration
   - `docker-compose.yml` — Docker Compose file for local infra
   - `keycloak/`          — Keycloak configuration and realm export
