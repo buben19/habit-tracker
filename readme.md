@@ -36,7 +36,10 @@ Habit Tracker is a microservices-based application for recording and visualizing
    - **Note:** Start Config Server, then Discovery, then Gateway, then other services.
 3. Start frontend:
    - From the frontend folder: `npm install` then `npm start` ⚛️
-4. Open the app and tools:
+4. Wait a few seconds for services to initialize and register with Eureka. Check Eureka dashboard at http://localhost:8761/ to see registered services. 🧭
+5. Now you can log in into the app at http://localhost:3000/:
+   - Default user: `buben` / `buben` 🔐
+5. Open the app and tools:
    - Frontend: http://localhost:3000/ 🌐
    - API: http://localhost:8080/ 🧩
    - Eureka: http://localhost:8761/ 🧭
