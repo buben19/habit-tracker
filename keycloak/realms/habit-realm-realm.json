@@ -2560,6 +2560,8 @@
   "users": [
     {
       "username": "buben",
+      "firstName" : "Ivo",
+      "lastName" : "Slanina",
       "enabled": true,
       "emailVerified": true,
       "email": "ivo.slanina@gmail.com",
