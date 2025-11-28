@@ -57,6 +57,7 @@ Habit Tracker is a microservices-based application for recording and visualizing
   - `habit-service/`     — Habit tracking service
   - `checkin-service/`   — Check-in service
   - `frontend/`          — React app
+  - `common/`            — Shared library for backend services
 - Configuration
   - `docker-compose.yml` — Docker Compose file for local infra
   - `keycloak/`          — Keycloak configuration and realm export
