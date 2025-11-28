@@ -1,14 +1,14 @@
 # Habit tracker 🚀
 
- - 🧭 http://localhost:8761/ - Eureka server
- - 🧩 http://localhost:8080/ - Habit tracker API service
- - 🌐 http://localhost:3000/ - Habit tracker React frontend
- - 🔐 http://localhost:8888/ - Keycloak server
- - 🔎 http://localhost:9411/ - Zipkin server
- - 📊 http://localhost:3001/ - Grafana server
- - 📈 http://localhost:9090/ - Prometheus server
- - 📚 http://localhost:5540/ - RedisInsight
- - 👂 http://localhost:8090/ - Kafka UI
+- 🌐 http://localhost:3000/ - Habit tracker React frontend
+- 🧩 http://localhost:8080/ - Habit tracker API service
+- 🧭 http://localhost:8761/ - Eureka server
+- 🔐 http://localhost:8888/ - Keycloak server
+- 🔎 http://localhost:9411/ - Zipkin server
+- 📊 http://localhost:3001/ - Grafana server
+- 📈 http://localhost:9090/ - Prometheus server
+- 📚 http://localhost:5540/ - RedisInsight
+- 👂 http://localhost:8090/ - Kafka UI
 
 ## Description ✨
 Habit Tracker is a microservices-based application for recording and visualizing personal habits over time. It uses a React frontend and a Java Spring Boot backend (Spring Cloud ecosystem) and integrates infrastructure services for service discovery, tracing, monitoring and authentication.
@@ -55,6 +55,14 @@ Habit Tracker is a microservices-based application for recording and visualizing
 - `habit-service/`   — Habit tracking service
 - `checkin-service/` — Check-in service
 - `frontend/`        — React app
+- Configuration
+  - `docker-compose.yml` — Docker Compose file for local infra
+  - `keycloak/`          — Keycloak configuration and realm export
+  - `prometheus/`        — Prometheus configuration
+  - `init-db/`           — SQL scripts for initializing databases
+  - `kui`                — Kafka UI configuration
+- Other
+  - `http/`              — HTTP client library for backend services
 
 ## Contributing 🤝
 - Open issues for bugs or features.
