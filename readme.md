@@ -36,7 +36,7 @@ Habit Tracker is a microservices-based application for recording and visualizing
    - From each backend service folder: `./mvnw spring-boot:run` or `mvn spring-boot:run` ☕
    - **Note:** Start Config Server, then Discovery, then Gateway, then other services.
 3. Start frontend:
-   - From the frontend folder: `npm install` then `npm start` ⚛️
+   - From the frontend folder: `npm install` then `npm run dev` ⚛️
 4. Wait a few seconds for services to initialize and register with Eureka. Check Eureka dashboard at http://localhost:8761/ to see registered services. 🧭
 5. Now you can log in into the app at http://localhost:3000/:
    - Default user: `buben` / `buben` 🔐
