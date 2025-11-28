@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.habitservice;
+package cz.buben.learning.habits.common.web;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-  // Handles @Valid @RequestBody errors
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<ValidationErrorResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
 

@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.checkinservice;
+package cz.buben.learning.habits.common.web;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
