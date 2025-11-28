@@ -19,6 +19,8 @@ Habit Tracker is a microservices-based application for recording and visualizing
 - Backend: Java + Spring Boot, Spring Cloud (Eureka, Gateway) ☕
 - Database: PostgreSQL 🐘
 - Auth: Keycloak 🔐
+- Messaging: Apache Kafka 🎵
+- Caching: Redis 🧠
 - Tracing: Zipkin 🔎
 - Monitoring: Prometheus + Grafana 📈📊
 - Service discovery: Eureka 🧭
