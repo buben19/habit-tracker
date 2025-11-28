@@ -21,6 +21,7 @@ Habit Tracker is a microservices-based application for recording and visualizing
 - Auth: Keycloak 🔐
 - Messaging: Apache Kafka 🎵
 - Caching: Redis 🧠
+- Service communication: REST + OpenFeign 🌐
 - Tracing: Zipkin 🔎
 - Monitoring: Prometheus + Grafana 📈📊
 - Service discovery: Eureka 🧭
