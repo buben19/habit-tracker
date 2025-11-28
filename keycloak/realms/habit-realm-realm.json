@@ -2569,7 +2569,10 @@
           "value": "buben",
           "temporary": false
         }
-      ]
+      ],
+      "clientRoles" : {
+        "realm-management" : [ "view-users" ]
+      }
     }
   ]
 }
