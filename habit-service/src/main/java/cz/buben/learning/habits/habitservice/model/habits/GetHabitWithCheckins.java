@@ -38,7 +38,7 @@ public class GetHabitWithCheckins {
         () -> new RuntimeException("Cannot get habits - no authenticated user found"));
     UserDto userById = userClient.findUserById(userId);
     List<Habit> habits = habitRepository.findByUserId(userId);
-    Map<Long, List<CheckinDto>> checkinsForHabits = getCheckinsForHabits(habits);
+    Map<Long, List<CheckinDto>> checkinsForHabits = getCheckinsForHabitsSync(habits);
     List<HabitCompleteResponse> habitCompleteResponses = new ArrayList<>();
     habits.forEach(habit -> {
       HabitDto habitDto = habitMapper.entityToDto(habit);
@@ -53,6 +53,14 @@ public class GetHabitWithCheckins {
     return HabitsCompleteResponse.builder()
         .habits(habitCompleteResponses)
         .build();
+  }
+
+  private Map<Long, List<CheckinDto>> getCheckinsForHabitsSync(List<Habit> habits) {
+    return habits.stream()
+        .collect(Collectors.toMap(
+            Habit::getId,
+            habit -> checkinClient.getCheckinsByHabitId(habit.getId())
+        ));
   }
 
   private Map<Long, List<CheckinDto>> getCheckinsForHabits(List<Habit> habits) {
