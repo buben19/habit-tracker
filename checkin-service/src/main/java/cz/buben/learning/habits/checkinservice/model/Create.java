@@ -28,7 +28,7 @@ public class Create {
     Checkin checkin = checkinMapper.dtoToEntity(checkinDto);
     Checkin saved = checkinRepository.save(checkin);
     CheckinDto dtoOut = checkinMapper.entityToDto(saved);
-    LOGGER.info("Sending checkin to Kafka topic: " + dtoOut);
+    LOGGER.info("Sending checkin to Kafka topic: {}", dtoOut);
     kafkaTemplate.send(TOPIC, dtoOut);
     return dtoOut;
   }

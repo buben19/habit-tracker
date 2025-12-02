@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class CreateTodayCheckin {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(Create.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(CreateTodayCheckin.class);
 
   private static final String TOPIC = "checkin";
 
@@ -39,7 +39,7 @@ public class CreateTodayCheckin {
         .build();
     Checkin saved = checkinRepository.save(checkin);
     CheckinDto checkinDto = checkinMapper.entityToDto(saved);
-    LOGGER.info("Sending checkin to Kafka topic: " + checkinDto);
+    LOGGER.info("Sending checkin to Kafka topic: {}", checkinDto);
     kafkaTemplate.send(TOPIC, checkinDto);
     return checkinDto;
   }
