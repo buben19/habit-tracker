@@ -35,6 +35,9 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8888/realms/habit-realm
+  threads:
+    virtual:
+      enabled: true
 
 server:
   port: 0
