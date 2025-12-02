@@ -17,7 +17,7 @@ Habit Tracker is a microservices-based application for recording and visualizing
 ## Technology stack 🧰
 - Frontend: React using Next.js ⚛️
 - Backend: Java + Spring Boot, Spring Cloud (Eureka, Gateway) ☕
-- Database: PostgreSQL 🐘
+- Database: PostgreSQL (H2 for tests) 🐘
 - Auth: Keycloak 🔐
 - Messaging: Apache Kafka 🎵
 - Caching: Redis 🧠

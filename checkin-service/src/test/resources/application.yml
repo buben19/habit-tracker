@@ -13,18 +13,20 @@ spring:
       port: 6379
   kafka:
     bootstrap-servers: localhost:9092
-    consumer:
-      group-id: checkin
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
       properties:
+        spring.json.add.type.headers: true
         spring.json.trusted.packages: "cz.buben.learning.habits.common.dto"
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${application.configuration.keycloak.url}/realms/${application.configuration.keycloak.realm}
+          issuer-uri: http://localhost:8888/realms/habit-realm
+  threads:
+    virtual:
+      enabled: true
 
 management:
   tracing:
@@ -41,9 +43,3 @@ management:
   endpoint:
     health:
       show-details: always
-
-application:
-  configuration:
-    keycloak:
-      realm: habit-realm
-      url: http://localhost:8888
