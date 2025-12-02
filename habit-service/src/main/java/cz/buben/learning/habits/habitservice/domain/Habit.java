@@ -1,11 +1,17 @@
 package cz.buben.learning.habits.habitservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "habits")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Habit {
 
   @Id

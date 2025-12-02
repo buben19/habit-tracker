@@ -20,7 +20,7 @@ public class CreateHabit {
   @Transactional
   public HabitDto create(HabitDto habitDto) {
     Habit habit = habitMapper.dtoToEntity(habitDto);
-    userIdProvider.getCurrentUserId().ifPresentOrElse(habit::setUserId, () -> {;
+    userIdProvider.getCurrentUserId().ifPresentOrElse(habit::setUserId, () -> {
       throw new RuntimeException("Cannot create habit - no authenticated user found");
     });
     Habit save = habitRepository.save(habit);

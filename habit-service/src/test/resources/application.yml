@@ -1,0 +1,63 @@
+eureka:
+  instance:
+    hostname: localhost
+    metadata-map:
+      metrics.path: /actuator/prometheus
+      health.path: /actuator/health
+      management.context-path: /actuator
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/habitdb
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: checkin
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+      properties:
+        spring.json.trusted.packages: "cz.buben.learning.habits.common.dto"
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${application.configuration.keycloak.url}/realms/${application.configuration.keycloak.realm}
+
+server:
+  port: 8080
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+    enabled: true
+  health:
+    eureka:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
+
+application:
+  configuration:
+    keycloak:
+      realm: habit-realm
+      url: http://localhost:8888
