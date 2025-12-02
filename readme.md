@@ -26,6 +26,7 @@ Habit Tracker is a microservices-based application for recording and visualizing
 - Monitoring: Prometheus + Grafana 📈📊
 - Service discovery: Eureka 🧭
 - Optional: Docker / docker-compose for local infra 🐳
+- Testing: JUnit, Mockito, Spock 🧪
 
 ## Prerequisites ⚙️
 - Node.js + npm or yarn (for frontend)
