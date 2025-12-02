@@ -10,9 +10,7 @@ import cz.buben.learning.habits.habitservice.repository.HabitRepository;
 import io.micrometer.context.ContextSnapshotFactory;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.task.SimpleAsyncTaskSchedulerBuilder;
-import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.core.task.TaskDecorator;
 import org.springframework.scheduling.concurrent.SimpleAsyncTaskScheduler;
 import org.springframework.stereotype.Service;
@@ -33,8 +31,6 @@ public class GetHabitWithCheckins {
   private final UserClient userClient;
   private final UserIdProvider userIdProvider;
   private final HabitMapper habitMapper;
-  @Qualifier("applicationTaskExecutor")
-  private final AsyncTaskExecutor asyncTaskExecutor;
 
   @Transactional
   public HabitsCompleteResponse getHabitsWithCheckins() {
