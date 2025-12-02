@@ -12,54 +12,54 @@ import spock.lang.Specification
 @SpringBootTest
 class CreateHabitSpecification extends Specification {
 
-    @Autowired
-    HabitMapper habitMapper
-    HabitRepository habitRepository = Mock()
-    UserIdProvider userIdProvider = Mock()
-    CreateHabit createHabit
+  @Autowired
+  HabitMapper habitMapper
+  HabitRepository habitRepository = Mock()
+  UserIdProvider userIdProvider = Mock()
+  CreateHabit createHabit
 
-    def setup() {
-        createHabit = new CreateHabit(
-                habitRepository,
-                userIdProvider,
-                habitMapper
-        )
-    }
-
-    def "context loads"() {
-        expect:
+  def setup() {
+    createHabit = new CreateHabit(
+        habitRepository,
+        userIdProvider,
         habitMapper
+    )
+  }
+
+  def "context loads"() {
+    expect:
+    habitMapper
+  }
+
+  def "create habit"() {
+    given:
+    def dto = HabitDto.builder()
+        .name("Test Habit")
+        .description("This is a test habit")
+        .build()
+
+    when:
+    def create = createHabit.create(dto)
+
+    then:
+    1 * userIdProvider.getCurrentUserId() >> Optional.of("test-user-id")
+
+    then:
+    1 * habitRepository.save(_ as Habit) >> { args ->
+      def habit = args[0] as Habit
+      assert habit.name == "Test Habit"
+      assert habit.description == "This is a test habit"
+      assert habit.userId == "test-user-id"
+      return Habit.builder()
+          .id(1L)
+          .name(habit.name)
+          .description(habit.description)
+          .userId(habit.userId)
+          .build()
     }
 
-    def "create habit"() {
-        given:
-        def dto = HabitDto.builder()
-                .name("Test Habit")
-                .description("This is a test habit")
-                .build()
-
-        when:
-        def create = createHabit.create(dto)
-
-        then:
-        1 * userIdProvider.getCurrentUserId() >> Optional.of("test-user-id")
-
-        then:
-        1 * habitRepository.save(_ as Habit) >> { args ->
-            def habit = args[0] as Habit
-            assert habit.name == "Test Habit"
-            assert habit.description == "This is a test habit"
-            assert habit.userId == "test-user-id"
-            return Habit.builder()
-                    .id(1L)
-                    .name(habit.name)
-                    .description(habit.description)
-                    .userId(habit.userId)
-                    .build()
-        }
-
-        expect:
-        create
-    }
+    expect:
+    create
+  }
 
 }

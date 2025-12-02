@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 public class HabitController {
 
-  private final GetHabits getHabits;
+  private final GetAllHabits getAllHabits;
   private final GetHabit getHabit;
   private final CreateHabit createHabit;
   private final UpdateHabit updateHabit;
@@ -44,7 +44,7 @@ public class HabitController {
   )
   @GetMapping
   public List<HabitDto> getHabits() {
-    return getHabits.all();
+    return getAllHabits.all();
   }
 
   @Operation(
