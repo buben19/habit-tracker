@@ -15,7 +15,7 @@ public class CheckinController {
 
   private final GetAll getAll;
   private final Create create;
-  private final FindCheckinsByByHabitId findCheckinsByByHabitId;
+  private final FindCheckinsByHabitId findCheckinsByHabitId;
   private final Today today;
   private final CreateTodayCheckin createTodayCheckin;
 
@@ -26,7 +26,7 @@ public class CheckinController {
 
   @GetMapping("/habit/{habitId}")
   public List<CheckinDto> findCheckinsByByHabitId(@PathVariable Long habitId) {
-    return findCheckinsByByHabitId.findCheckinsByHabitId(habitId);
+    return findCheckinsByHabitId.findCheckinsByHabitId(habitId);
   }
 
   @PostMapping
