@@ -3,6 +3,7 @@ package cz.buben.learning.habits.habitservice.broker;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,7 @@ public class KafkaTestConfig {
   private String bootstrapAddress;
 
   @Bean
+  @NullMarked
   public ProducerFactory<String, CheckinDto> producerFactory() {
     Map<String, Object> configProps = new HashMap<>();
     configProps.put(BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
@@ -34,14 +36,14 @@ public class KafkaTestConfig {
   }
 
   @Bean
+  @NullMarked
   public KafkaTemplate<String, CheckinDto> kafkaTemplate(ProducerFactory<String, CheckinDto> producerFactory) {
     return new KafkaTemplate<>(producerFactory);
   }
 
   @Bean
+  @NullMarked
   public KafkaConsumer<String, CheckinDto> testConsumer(ConsumerFactory<String, CheckinDto> consumerFactory) {
-
-    // Use the factory; it already has correct bootstrap.servers
     return (KafkaConsumer<String, CheckinDto>) consumerFactory.createConsumer();
   }
 }

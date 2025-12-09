@@ -2,6 +2,7 @@ package cz.buben.learning.habits.checkinservice;
 
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,7 @@ public class KafkaProducerConfig {
   private String bootstrapAddress;
 
   @Bean
+  @NullMarked
   public ProducerFactory<String, CheckinDto> producerFactory() {
     Map<String, Object> configProps = new HashMap<>();
     configProps.put(BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
@@ -32,6 +34,7 @@ public class KafkaProducerConfig {
   }
 
   @Bean
+  @NullMarked
   public KafkaTemplate<String, CheckinDto> kafkaTemplate() {
     return new KafkaTemplate<>(producerFactory());
   }

@@ -3,6 +3,7 @@ package cz.buben.learning.habits.habitservice;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +27,7 @@ public class KafkaConsumerConfig {
   private String groupId;
 
   @Bean
+  @NullMarked
   public ConsumerFactory<String, CheckinDto> checkinConsumerFactory() {
     Map<String, Object> props = new HashMap<>();
     props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
@@ -44,6 +46,7 @@ public class KafkaConsumerConfig {
   }
 
   @Bean
+  @NullMarked
   public ConcurrentKafkaListenerContainerFactory<String, CheckinDto> checkinKafkaListenerContainerFactory() {
     ConcurrentKafkaListenerContainerFactory<String, CheckinDto> factory = new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(checkinConsumerFactory());

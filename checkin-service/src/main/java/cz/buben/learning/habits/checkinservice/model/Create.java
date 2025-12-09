@@ -5,6 +5,7 @@ import cz.buben.learning.habits.checkinservice.mapping.CheckinMapper;
 import cz.buben.learning.habits.checkinservice.repository.CheckinRepository;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

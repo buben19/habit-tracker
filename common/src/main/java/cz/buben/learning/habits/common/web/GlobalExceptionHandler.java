@@ -2,6 +2,7 @@ package cz.buben.learning.habits.common.web;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+  @NullMarked
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<ValidationErrorResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
 
@@ -35,6 +37,7 @@ public class GlobalExceptionHandler {
   }
 
   // Handles @Validated on path params, query params, etc.
+  @NullMarked
   @ExceptionHandler(ConstraintViolationException.class)
   public ResponseEntity<ValidationErrorResponse> handleConstraintViolation(ConstraintViolationException ex) {
 

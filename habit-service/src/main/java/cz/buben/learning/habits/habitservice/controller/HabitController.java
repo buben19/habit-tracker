@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -70,6 +71,7 @@ public class HabitController {
       description = "Update the details of an existing habit"
   )
   @PutMapping("/{id}")
+  @NullMarked
   public ResponseEntity<HabitDto> updateHabit(@Valid @RequestBody HabitDto habit) {
     HabitDto updatedHabit = updateHabit.update(habit);
     return ResponseEntity.ok(updatedHabit);
@@ -80,6 +82,7 @@ public class HabitController {
       description = "Delete a habit by its ID"
   )
   @DeleteMapping("/{id}")
+  @NullMarked
   public ResponseEntity<Void> deleteHabit(@PathVariable Long id) {
     deleteHabit.delete(id);
     return ResponseEntity.noContent().build();
