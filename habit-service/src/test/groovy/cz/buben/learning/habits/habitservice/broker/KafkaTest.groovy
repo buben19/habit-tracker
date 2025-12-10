@@ -1,6 +1,7 @@
 package cz.buben.learning.habits.habitservice.broker
 
 import cz.buben.learning.habits.common.dto.CheckinDto
+import cz.buben.learning.habits.habitservice.KafkaTestConfig
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.habitservice.broker;
+package cz.buben.learning.habits.habitservice;
 
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
