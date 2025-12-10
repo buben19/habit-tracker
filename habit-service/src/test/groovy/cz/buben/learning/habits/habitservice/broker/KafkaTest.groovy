@@ -23,6 +23,14 @@ class KafkaTest extends Specification {
   @Autowired
   KafkaTemplate<String, CheckinDto> kafkaTemplate
 
+  def setup() {
+    consumer.subscribe(["checkin"])
+  }
+
+  def cleanup() {
+    consumer.unsubscribe()
+  }
+
   def "context loads"() {
     expect:
     true
@@ -37,7 +45,6 @@ class KafkaTest extends Specification {
         .build()
 
     when:
-    consumer.subscribe(["checkin"])
     kafkaTemplate.send("checkin", checkinDto)
 
     then:

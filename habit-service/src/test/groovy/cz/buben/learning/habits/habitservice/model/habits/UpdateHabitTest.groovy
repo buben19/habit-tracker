@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
 @SpringBootTest
-class UpdateHabitSpecification extends Specification {
+class UpdateHabitTest extends Specification {
 
   @Autowired
   HabitMapper habitMapper;

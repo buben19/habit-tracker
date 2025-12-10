@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
 @SpringBootTest
-class CreateHabitSpecification extends Specification {
+class CreateHabitTest extends Specification {
 
   @Autowired
   HabitMapper habitMapper

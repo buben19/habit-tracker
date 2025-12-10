@@ -15,7 +15,7 @@ import spock.lang.Specification
 import java.time.LocalDate
 
 @SpringBootTest
-class GetHabitWithCheckinsSpecification extends Specification {
+class GetHabitWithCheckinsTest extends Specification {
 
   @Autowired
   HabitMapper habitMapper

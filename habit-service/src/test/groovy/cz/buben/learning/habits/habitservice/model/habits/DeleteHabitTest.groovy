@@ -3,7 +3,7 @@ package cz.buben.learning.habits.habitservice.model.habits
 import cz.buben.learning.habits.habitservice.repository.HabitRepository
 import spock.lang.Specification
 
-class DeleteHabitSpecification extends Specification {
+class DeleteHabitTest extends Specification {
 
   HabitRepository habitRepository = Mock()
   DeleteHabit deleteHabit
