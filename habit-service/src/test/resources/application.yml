@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: test
   cloud:
     discovery:
       enabled: false
@@ -22,6 +24,7 @@ spring:
     bootstrap-servers: localhost:9092
     consumer:
       group-id: checkin
+      auto-offset-reset: earliest
   security:
     oauth2:
       resourceserver:

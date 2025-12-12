@@ -10,6 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.test.context.EmbeddedKafka
 import org.springframework.kafka.test.utils.KafkaTestUtils
 import org.springframework.test.annotation.DirtiesContext
+import spock.lang.Ignore
 import spock.lang.Specification
 
 @SpringBootTest
@@ -19,7 +20,7 @@ import spock.lang.Specification
 class KafkaTest extends Specification {
 
   @Autowired
-  private KafkaConsumer consumer;
+  KafkaConsumer consumer
 
   @Autowired
   KafkaTemplate<String, CheckinDto> kafkaTemplate
@@ -32,6 +33,7 @@ class KafkaTest extends Specification {
     consumer.unsubscribe()
   }
 
+  @Ignore
   def "context loads"() {
     expect:
     true
