@@ -10,7 +10,6 @@ import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.test.context.EmbeddedKafka
 import org.springframework.kafka.test.utils.KafkaTestUtils
 import org.springframework.test.annotation.DirtiesContext
-import spock.lang.Ignore
 import spock.lang.Specification
 
 @SpringBootTest
@@ -33,7 +32,6 @@ class KafkaTest extends Specification {
     consumer.unsubscribe()
   }
 
-  @Ignore
   def "context loads"() {
     expect:
     true

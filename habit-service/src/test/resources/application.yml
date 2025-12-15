@@ -25,6 +25,10 @@ spring:
     consumer:
       group-id: checkin
       auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+      properties:
+        spring.json.trusted.packages: "cz.buben.learning.habits.common.dto"
   security:
     oauth2:
       resourceserver:
