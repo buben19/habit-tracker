@@ -11,7 +11,9 @@ import org.springframework.kafka.test.utils.KafkaTestUtils
 import org.springframework.test.annotation.DirtiesContext
 import spock.lang.Specification
 
-@SpringBootTest
+@SpringBootTest(properties = [
+  'spring.kafka.bootstrap-servers=${spring.embedded.kafka.brokers}'
+])
 @Import(KafkaTestConfig)
 @DirtiesContext
 @EmbeddedKafka(partitions = 1, topics = ["checkin"])
