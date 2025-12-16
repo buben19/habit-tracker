@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { apiFetch } from "@/lib/api";
 import { useAuth } from "@/ui/KeycloakProvider";
+import { Button, Form } from "react-bootstrap";
 
 export default function NewHabitPage() {
   const [name, setName] = useState("");
@@ -21,13 +22,25 @@ export default function NewHabitPage() {
   }
 
   return (
-    <main style={{ padding: 24 }}>
+    <main>
       <h1>Create habit</h1>
-      <form onSubmit={submit} style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 300 }}>
-        <input value={name} onChange={e => setName(e.target.value)} placeholder="Habit name" />
-        <input value={schedule} onChange={e => setSchedule(e.target.value)} placeholder="Schedule" />
-        <button type="submit">Create</button>
-      </form>
+      <Form onSubmit={submit}>
+        <Form.Group>
+          <Form.Label>Habit name</Form.Label>
+          <Form.Control type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter habit name" />
+          <Form.Text>adsd</Form.Text>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Schedule</Form.Label>
+          <Form.Select value={schedule} onChange={e => setSchedule(e.target.value)}>
+            <option value="DAILY">DAILY</option>
+            <option value="WEEKLY">WEEKLY</option>
+            <option value="MONTHLY">MONTHLY</option>
+            <option value="YEARLY">YEARLY</option>
+          </Form.Select>
+        </Form.Group>
+        <Button type="submit">Create</Button>
+      </Form>
     </main>
   );
 }
