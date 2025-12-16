@@ -3,7 +3,6 @@
 import { useAuth } from "@/ui/KeycloakProvider";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Link from "next/link";
-import Keycloak from "@/lib/keycloak";
 
 export const NavBar = () => {
   const { authenticated, login, logout, keycloak} = useAuth();
