@@ -1,13 +1,30 @@
 import { Button, Table } from "react-bootstrap";
 import { HabitResponse } from "@/lib/types";
 import { apiFetch } from "@/lib/api";
+import { useAuth } from "@/ui/KeycloakProvider";
+import { useEffect, useState } from "react";
 
-export default function HabitTable({habitResponse, token} : {habitResponse: HabitResponse, token?: string}) {
+export default function HabitTable() {
+  const [ habitResponse, setHabitResponse ] = useState<HabitResponse>({ habits: [] });
+  const { authenticated, token } = useAuth();
+
+  async function fetchHabits() {
+    if (authenticated) {
+      return apiFetch("/habits/with-checkins", token)
+        .then(setHabitResponse)
+        .catch((e) => console.error(e));
+    }
+  }
+
+  useEffect(() => {
+    fetchHabits();
+  }, [ authenticated, token ]);
 
   async function mark(habitId: number) {
     const checkinResponse = await apiFetch(`/checkins/today/${habitId}`, token, {
       method: "POST",
     });
+    fetchHabits();
     console.log("Checkin response: ", JSON.stringify(checkinResponse));
   }
 
