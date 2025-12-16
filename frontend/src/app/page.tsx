@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
 import { useAuth } from "@/ui/KeycloakProvider";
 import Link from "next/link";
-import { Button, Table } from "react-bootstrap";
 import { HabitResponse } from "@/lib/types";
 import HabitTable from "@/ui/HabitTable";
 
