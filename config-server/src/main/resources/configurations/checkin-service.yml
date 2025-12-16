@@ -57,3 +57,11 @@ management:
   endpoint:
     health:
       show-details: always
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /checkin-service/v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /checkin-service/swagger-ui.html

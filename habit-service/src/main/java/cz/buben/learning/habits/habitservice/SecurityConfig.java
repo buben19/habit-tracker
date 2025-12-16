@@ -21,9 +21,9 @@ public class SecurityConfig {
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(
                 "/actuator/**",
-                "/v3/api-docs/**",
-                "/swagger-ui/**",
-                "/swagger-ui.html"
+                "/habit-service/v3/api-docs/**",
+                "/habit-service/swagger-ui/**",
+                "/habit-service/swagger-ui.html"
             ).permitAll()
             .anyRequest().authenticated())
         .oauth2ResourceServer(oauth2 -> oauth2

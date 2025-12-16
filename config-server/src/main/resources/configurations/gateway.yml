@@ -26,11 +26,11 @@ spring:
             - id: habit-service
               uri: lb://habit-service
               predicates:
-                - Path=/api/habits/**
+                - Path=/api/habits/**, /habit-service/**
             - id: checkin-service
               uri: lb://checkin-service
               predicates:
-                - Path=/api/checkins/**
+                - Path=/api/checkins/**, /checkin-service/**
         discovery:
           locator:
             enabled: true
@@ -76,3 +76,18 @@ management:
   endpoint:
     health:
       show-details: always
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - name: gateway-service
+        url: /v3/api-docs
+      - name: habit-service
+        url: /habit-service/v3/api-docs
+      - name: checkin-service
+        url: /checkin-service/v3/api-docs

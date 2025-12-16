@@ -61,3 +61,11 @@ application:
     keycloak:
       realm: habit-realm
       url: http://localhost:8888
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /habit-service/v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /habit-service/swagger-ui.html

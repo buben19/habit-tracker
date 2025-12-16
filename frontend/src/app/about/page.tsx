@@ -14,6 +14,7 @@ const aboutLinks: AboutLink[] = [
   { url: "http://localhost:5540/", description: "RedisInsight" },
   { url: "http://localhost:8090/", description: "Kafka UI" },
   { url: "http://localhost:5050/", description: "pgAdmin (PostgreSQL)" },
+  { url: "http://localhost:8080/swagger-ui/index.html", description: "OpenApi documentation" },
 ];
 
 export default function AboutPage() {
