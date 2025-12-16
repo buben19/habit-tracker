@@ -22,6 +22,6 @@ public interface CheckinClient {
 
   @CacheEvict(value = "checkinCache", key = "#habitId")
   default void clearCacheByHabitId(Long habitId) {
-    LOGGER.debug("Clearing cache for Habit id: {}", habitId);
+    LOGGER.info("Clearing cache for Habit id: {}", habitId);
   }
 }
