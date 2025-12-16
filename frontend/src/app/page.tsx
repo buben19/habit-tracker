@@ -5,31 +5,7 @@ import { apiFetch } from "@/lib/api";
 import { useAuth } from "@/ui/KeycloakProvider";
 import Link from "next/link";
 import { Button, Table } from "react-bootstrap";
-
-type Habit = {
-  id: number;
-  userId: string;
-  userName: string;
-  schedule: string;
-  name: string;
-  description: string | null;
-}
-
-type Checkin = {
-  id: number;
-  userId: string;
-  habitId: number;
-  date: string
-}
-
-type HabitWithCheckins = {
-  habit: Habit;
-  checkin: Checkin[] | null;
-};
-
-type HabitResponse = {
-  habits: HabitWithCheckins[];
-}
+import { HabitResponse } from "@/lib/types";
 
 export default function HomePage() {
   const [habitResponse, setHabitResponse] = useState<HabitResponse>({ habits: [] });
