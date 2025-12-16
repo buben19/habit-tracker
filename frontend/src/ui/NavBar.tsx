@@ -3,9 +3,10 @@
 import { useAuth } from "@/ui/KeycloakProvider";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Link from "next/link";
+import Keycloak from "@/lib/keycloak";
 
 export const NavBar = () => {
-  const { authenticated, login, logout} = useAuth();
+  const { authenticated, login, logout, keycloak} = useAuth();
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
@@ -35,7 +36,7 @@ export const NavBar = () => {
         </Navbar.Collapse>
         {
           authenticated
-            ? <Button onClick={logout}>Logout</Button>
+            ? <Button onClick={logout}>Logout (<small>{keycloak?.tokenParsed?.name}</small>)</Button>
             : <Button onClick={login}>Login</Button>
         }
       </Container>
