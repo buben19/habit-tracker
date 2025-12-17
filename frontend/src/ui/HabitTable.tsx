@@ -52,8 +52,8 @@ export default function HabitTable() {
               <td>
                 <div className="d-inline-flex gap-2">
                   <Button variant="success" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-check-lg"></i></Button>
-                  <Button variant="secondary" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-pencil-fill"></i></Button>
-                  <Button variant="danger" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-trash-fill"></i></Button>
+                  <Button variant="secondary" size="sm"><i className="bi bi-pencil-fill"></i></Button>
+                  <Button variant="danger" size="sm"><i className="bi bi-trash-fill"></i></Button>
                 </div>
               </td>
             </tr>
