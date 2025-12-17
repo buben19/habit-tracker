@@ -31,32 +31,34 @@ export default function HabitTable() {
   return (
     <Table striped bordered hover>
       <thead>
-      <tr>
-        <th>User</th>
-        <th>Schedule</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Checkins</th>
-        <th>Checkin</th>
-      </tr>
+        <tr>
+          <th>User</th>
+          <th>Schedule</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Checkins</th>
+          <th>Checkin</th>
+        </tr>
       </thead>
       <tbody>
-      {habitResponse.habits.map(habit => (
-        <tr key={habit.habit.id}>
-          <td>{habit.habit.userName}</td>
-          <td><span className="badge bg-primary">{habit.habit.schedule}</span></td>
-          <td>{habit.habit.name}</td>
-          <td>{habit.habit.description}</td>
-          <td>{habit.checkin?.length}</td>
-          <td>
-            <div className="d-inline-flex gap-2">
-              <Button variant="success" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-check-lg"></i></Button>
-              <Button variant="secondary" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-pencil-fill"></i></Button>
-              <Button variant="danger" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-trash-fill"></i></Button>
-            </div>
-          </td>
-        </tr>
-      ))}
+        {
+          habitResponse.habits.map(habit => (
+            <tr key={habit.habit.id}>
+              <td>{habit.habit.userName}</td>
+              <td><span className="badge bg-primary">{habit.habit.schedule}</span></td>
+              <td>{habit.habit.name}</td>
+              <td>{habit.habit.description}</td>
+              <td>{habit.checkin?.length}</td>
+              <td>
+                <div className="d-inline-flex gap-2">
+                  <Button variant="success" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-check-lg"></i></Button>
+                  <Button variant="secondary" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-pencil-fill"></i></Button>
+                  <Button variant="danger" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-trash-fill"></i></Button>
+                </div>
+              </td>
+            </tr>
+          ))
+        }
       </tbody>
     </Table>
   );
