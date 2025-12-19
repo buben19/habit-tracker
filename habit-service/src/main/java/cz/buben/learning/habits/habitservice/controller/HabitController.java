@@ -1,15 +1,16 @@
 package cz.buben.learning.habits.habitservice.controller;
 
-import cz.buben.learning.habits.habitservice.model.habits.*;
 import cz.buben.learning.habits.common.dto.HabitDto;
 import cz.buben.learning.habits.common.dto.HabitsCompleteResponse;
+import cz.buben.learning.habits.habitservice.model.habits.*;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.jspecify.annotations.NullMarked;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,9 @@ public class HabitController {
   @Operation(
       summary = "Get all habits",
       description = "Retrieve a list of all habits",
+      requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+          description = "No request body is needed for this operation"
+      ),
       responses = {
         @ApiResponse(
             responseCode = "200",
@@ -50,7 +54,23 @@ public class HabitController {
 
   @Operation(
       summary = "Get habit by ID",
-      description = "Retrieve a specific habit by its ID"
+      description = "Retrieve a specific habit by its ID",
+      parameters = @Parameter(
+          name = "id",
+          in = ParameterIn.PATH,
+          description = "ID of the habit to retrieve",
+          required = true
+      ),
+      responses = {
+          @ApiResponse(
+              responseCode = "200",
+              description = "Successful operation"
+          ),
+          @ApiResponse(
+              responseCode = "401",
+              description = "Unauthorized"
+          )
+      }
   )
   @GetMapping("/{id}")
   public HabitDto getHabit(@PathVariable Long id) {
@@ -71,7 +91,6 @@ public class HabitController {
       description = "Update the details of an existing habit"
   )
   @PutMapping("/{id}")
-  @NullMarked
   public ResponseEntity<HabitDto> updateHabit(@Valid @RequestBody HabitDto habit) {
     HabitDto updatedHabit = updateHabit.update(habit);
     return ResponseEntity.ok(updatedHabit);
@@ -82,12 +101,15 @@ public class HabitController {
       description = "Delete a habit by its ID"
   )
   @DeleteMapping("/{id}")
-  @NullMarked
   public ResponseEntity<Void> deleteHabit(@PathVariable Long id) {
     deleteHabit.delete(id);
     return ResponseEntity.noContent().build();
   }
 
+  @Operation(
+      summary = "Get habits with check-ins",
+      description = "Retrieve habits along with their associated check-ins. Only habits for current user are returned."
+  )
   @GetMapping("/with-checkins")
   public HabitsCompleteResponse getHabitsWithCheckins() {
     return getHabitWithCheckins.getHabitsWithCheckins();

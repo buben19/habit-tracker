@@ -69,3 +69,8 @@ springdoc:
   swagger-ui:
     enabled: true
     path: /habit-service/swagger-ui.html
+    oauth:
+      client-id: swagger-ui
+      client-secret: justFillerBecausePKCEisUsed
+      use-pkce-with-authorization-code-grant: true
+    oauth2-redirect-url: http://localhost:8080/swagger-ui/oauth2-redirect.html

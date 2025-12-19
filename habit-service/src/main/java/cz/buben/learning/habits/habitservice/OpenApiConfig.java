@@ -6,6 +6,9 @@ import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.info.License;
+import io.swagger.v3.oas.annotations.security.OAuthFlow;
+import io.swagger.v3.oas.annotations.security.OAuthFlows;
+import io.swagger.v3.oas.annotations.security.OAuthScope;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 
@@ -27,17 +30,28 @@ import io.swagger.v3.oas.annotations.servers.Server;
     servers = {
         @Server(
             description = "Local Server",
-            url = "http://localhost:8081"
+            url = "http://localhost:8080"
         )
     }
 )
 @SecurityScheme(
     name = "bearerAuth",
     description = "JWT Bearer token authentication",
-    scheme = "bearer",
-    type = SecuritySchemeType.HTTP,
-    bearerFormat = "JWT",
-    in = SecuritySchemeIn.HEADER
+    // scheme = "bearer",
+    type = SecuritySchemeType.OAUTH2,
+    // bearerFormat = "JWT",
+    // in = SecuritySchemeIn.HEADER,
+    flows = @OAuthFlows(
+        authorizationCode = @OAuthFlow(
+            authorizationUrl = "http://localhost:8888/realms/habit-realm/protocol/openid-connect/auth",
+            tokenUrl = "http://localhost:8888/realms/habit-realm/protocol/openid-connect/token",
+            scopes = {
+                @OAuthScope(name = "springdoc.read", description = "read scope"),
+                @OAuthScope(name = "springdoc.write", description = "write scope"),
+                @OAuthScope(name = "openid", description = "OpenID")
+            }
+        )
+    )
 )
 public class OpenApiConfig {
 }

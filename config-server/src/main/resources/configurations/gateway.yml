@@ -91,3 +91,8 @@ springdoc:
         url: /habit-service/v3/api-docs
       - name: checkin-service
         url: /checkin-service/v3/api-docs
+    oauth:
+      client-id: swagger-ui
+      client-secret: justFillerBecausePKCEisUsed
+      use-pkce-with-authorization-code-grant: true
+    oauth2-redirect-url: http://localhost:8080/swagger-ui/oauth2-redirect.html
