@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.checkinservice.model
+package cz.buben.learning.habits.checkinservice.model.checkin
 
 import cz.buben.learning.habits.checkinservice.domain.Checkin
 import cz.buben.learning.habits.checkinservice.mapping.CheckinMapper
@@ -10,7 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate
 import spock.lang.Specification
 
 @SpringBootTest
-class CreateSpecification extends Specification {
+class CreateTest extends Specification {
 
   @Autowired
   CheckinMapper checkinMapper

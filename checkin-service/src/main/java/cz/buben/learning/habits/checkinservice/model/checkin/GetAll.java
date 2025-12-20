@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.checkinservice.model;
+package cz.buben.learning.habits.checkinservice.model.checkin;
 
 import cz.buben.learning.habits.checkinservice.mapping.CheckinMapper;
 import cz.buben.learning.habits.checkinservice.repository.CheckinRepository;

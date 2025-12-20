@@ -1,11 +1,10 @@
-package cz.buben.learning.habits.checkinservice.model;
+package cz.buben.learning.habits.checkinservice.model.checkin;
 
 import cz.buben.learning.habits.checkinservice.domain.Checkin;
 import cz.buben.learning.habits.checkinservice.mapping.CheckinMapper;
 import cz.buben.learning.habits.checkinservice.repository.CheckinRepository;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import jakarta.transaction.Transactional;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

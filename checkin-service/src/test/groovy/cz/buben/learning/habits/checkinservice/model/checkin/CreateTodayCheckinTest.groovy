@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.checkinservice.model
+package cz.buben.learning.habits.checkinservice.model.checkin
 
 import cz.buben.learning.habits.checkinservice.UserIdProvider
 import cz.buben.learning.habits.checkinservice.domain.Checkin
@@ -11,7 +11,7 @@ import org.springframework.kafka.core.KafkaTemplate
 import spock.lang.Specification
 
 @SpringBootTest
-class CreateTodayCheckinSpecification extends Specification {
+class CreateTodayCheckinTest extends Specification {
 
   @Autowired
   CheckinMapper checkinMapper

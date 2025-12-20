@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.checkinservice.model
+package cz.buben.learning.habits.checkinservice.model.checkin
 
 import cz.buben.learning.habits.checkinservice.domain.Checkin
 import cz.buben.learning.habits.checkinservice.mapping.CheckinMapper
@@ -7,16 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
+import java.time.LocalDate
+
 @SpringBootTest
-class FindCheckinsByHabitIdSpecification extends Specification {
+class TodayTest extends Specification {
 
   @Autowired
   CheckinMapper checkinMapper
   CheckinRepository checkinRepository = Mock()
-  FindCheckinsByHabitId findCheckinsByByHabitId
+  Today today
 
   def setup() {
-    findCheckinsByByHabitId = new FindCheckinsByHabitId(
+    today = new Today(
         checkinRepository,
         checkinMapper
     )
@@ -27,34 +29,34 @@ class FindCheckinsByHabitIdSpecification extends Specification {
     checkinMapper
   }
 
-  def "find checkins by habit id"() {
+  def "get today's checkins"() {
     given:
-    def habitId = 1L
+    def userId = "test-user-id"
 
     when:
-    def byHabitId = findCheckinsByByHabitId.findCheckinsByHabitId(habitId)
+    def todayCheckins = today.getTodayCheckins(userId)
 
     then:
-    1 * checkinRepository.findByHabitId(habitId) >> [
+    1 * checkinRepository.findByUserIdAndDay(userId, _ as LocalDate) >> [
         Checkin.builder()
             .id(1L)
-            .habitId(habitId)
+            .habitId(1L)
             .userId("test-user-id")
             .build(),
         Checkin.builder()
             .id(2L)
-            .habitId(habitId)
+            .habitId(2L)
             .userId("test-user-id")
             .build(),
         Checkin.builder()
             .id(3L)
-            .habitId(habitId)
+            .habitId(3L)
             .userId("test-user-id")
             .build(),
     ]
 
     expect:
-    byHabitId
-    byHabitId.size() == 3
+    todayCheckins
+    todayCheckins.size() == 3
   }
 }

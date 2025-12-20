@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.checkinservice.model
+package cz.buben.learning.habits.checkinservice.model.checkin
 
 import cz.buben.learning.habits.checkinservice.domain.Checkin
 import cz.buben.learning.habits.checkinservice.mapping.CheckinMapper
@@ -7,18 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
-import java.time.LocalDate
-
 @SpringBootTest
-class TodaySpecification extends Specification {
+class FindCheckinsByHabitIdTest extends Specification {
 
   @Autowired
   CheckinMapper checkinMapper
   CheckinRepository checkinRepository = Mock()
-  Today today
+  FindCheckinsByHabitId findCheckinsByByHabitId
 
   def setup() {
-    today = new Today(
+    findCheckinsByByHabitId = new FindCheckinsByHabitId(
         checkinRepository,
         checkinMapper
     )
@@ -29,34 +27,34 @@ class TodaySpecification extends Specification {
     checkinMapper
   }
 
-  def "get today's checkins"() {
+  def "find checkins by habit id"() {
     given:
-    def userId = "test-user-id"
+    def habitId = 1L
 
     when:
-    def todayCheckins = today.getTodayCheckins(userId)
+    def byHabitId = findCheckinsByByHabitId.findCheckinsByHabitId(habitId)
 
     then:
-    1 * checkinRepository.findByUserIdAndDay(userId, _ as LocalDate) >> [
+    1 * checkinRepository.findByHabitId(habitId) >> [
         Checkin.builder()
             .id(1L)
-            .habitId(1L)
+            .habitId(habitId)
             .userId("test-user-id")
             .build(),
         Checkin.builder()
             .id(2L)
-            .habitId(2L)
+            .habitId(habitId)
             .userId("test-user-id")
             .build(),
         Checkin.builder()
             .id(3L)
-            .habitId(3L)
+            .habitId(habitId)
             .userId("test-user-id")
             .build(),
     ]
 
     expect:
-    todayCheckins
-    todayCheckins.size() == 3
+    byHabitId
+    byHabitId.size() == 3
   }
 }

@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.checkinservice.model;
+package cz.buben.learning.habits.checkinservice.model.checkin;
 
 import cz.buben.learning.habits.checkinservice.UserIdProvider;
 import cz.buben.learning.habits.checkinservice.domain.Checkin;

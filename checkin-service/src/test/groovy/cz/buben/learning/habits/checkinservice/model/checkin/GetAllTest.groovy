@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.checkinservice.model
+package cz.buben.learning.habits.checkinservice.model.checkin
 
 import cz.buben.learning.habits.checkinservice.domain.Checkin
 import cz.buben.learning.habits.checkinservice.mapping.CheckinMapper
@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
 @SpringBootTest
-class GetAllSpecification extends Specification {
+class GetAllTest extends Specification {
 
   @Autowired
   CheckinMapper checkinMapper
