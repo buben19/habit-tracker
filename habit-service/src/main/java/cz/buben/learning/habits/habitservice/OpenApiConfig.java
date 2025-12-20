@@ -37,10 +37,10 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @SecurityScheme(
     name = "bearerAuth",
     description = "JWT Bearer token authentication",
-    // scheme = "bearer",
+    scheme = "bearer",
     type = SecuritySchemeType.OAUTH2,
-    // bearerFormat = "JWT",
-    // in = SecuritySchemeIn.HEADER,
+    bearerFormat = "JWT",
+    in = SecuritySchemeIn.HEADER,
     flows = @OAuthFlows(
         authorizationCode = @OAuthFlow(
             authorizationUrl = "http://localhost:8888/realms/habit-realm/protocol/openid-connect/auth",
