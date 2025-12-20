@@ -29,6 +29,7 @@ Habit Tracker is a microservices-based application for recording and visualizing
 - Testing: JUnit, Mockito, Spock 🧪
 - Entity mapping: Spring Data JPA + Hibernate + MapStruct 🗄️
 - Parallelism: Spring Async, Java Virtual Threads ⚙️
+- Documentation: OpenAPI / Swagger 📄
 
 ## Prerequisites ⚙️
 - Node.js + npm or yarn (for frontend)
