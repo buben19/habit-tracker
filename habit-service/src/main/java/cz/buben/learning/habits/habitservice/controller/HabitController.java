@@ -204,4 +204,19 @@ public class HabitController {
   public HabitsCompleteResponse getHabitsWithCheckins() {
     return getHabitWithCheckins.getHabitsWithCheckins();
   }
+
+  @Operation(
+      summary = "Delete habit with check-ins",
+      description = "Delete a habit along with all its associated check-ins. Not implemented yet.",
+      responses = {
+          @ApiResponse(
+              responseCode = "501",
+              description = "Not Implemented"
+          )
+      }
+  )
+  @DeleteMapping
+  public void deleteHabitWithCheckins(Long id) {
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
 }
