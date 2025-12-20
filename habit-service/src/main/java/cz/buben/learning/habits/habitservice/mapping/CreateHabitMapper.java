@@ -1,10 +1,10 @@
 package cz.buben.learning.habits.habitservice.mapping;
 
 import cz.buben.learning.habits.habitservice.domain.Habit;
-import cz.buben.learning.habits.common.dto.HabitDto;
+import cz.buben.learning.habits.habitservice.dto.CreateHabitDtoIn;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface HabitMapper {
-  HabitDto entityToDto(Habit habit);
+public interface CreateHabitMapper {
+  Habit dtoToEntity(CreateHabitDtoIn createHabitDtoIn);
 }

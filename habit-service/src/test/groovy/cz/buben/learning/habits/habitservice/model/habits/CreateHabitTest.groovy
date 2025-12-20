@@ -1,8 +1,10 @@
 package cz.buben.learning.habits.habitservice.model.habits
 
-import cz.buben.learning.habits.common.dto.HabitDto
 import cz.buben.learning.habits.habitservice.UserIdProvider
 import cz.buben.learning.habits.habitservice.domain.Habit
+import cz.buben.learning.habits.habitservice.domain.Schedule
+import cz.buben.learning.habits.habitservice.dto.CreateHabitDtoIn
+import cz.buben.learning.habits.habitservice.mapping.CreateHabitMapper
 import cz.buben.learning.habits.habitservice.mapping.HabitMapper
 import cz.buben.learning.habits.habitservice.repository.HabitRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,6 +16,8 @@ class CreateHabitTest extends Specification {
 
   @Autowired
   HabitMapper habitMapper
+  @Autowired
+  CreateHabitMapper createHabitMapper
   HabitRepository habitRepository = Mock()
   UserIdProvider userIdProvider = Mock()
   CreateHabit createHabit
@@ -22,24 +26,21 @@ class CreateHabitTest extends Specification {
     createHabit = new CreateHabit(
         habitRepository,
         userIdProvider,
+        createHabitMapper,
         habitMapper
     )
   }
 
-  def "context loads"() {
-    expect:
-    habitMapper
-  }
-
   def "create habit"() {
     given:
-    def dto = HabitDto.builder()
+    def createHabitDtoIn = CreateHabitDtoIn.builder()
         .name("Test Habit")
         .description("This is a test habit")
+        .schedule(Schedule.DAILY)
         .build()
 
     when:
-    def create = createHabit.create(dto)
+    def create = createHabit.create(createHabitDtoIn)
 
     then:
     1 * userIdProvider.getCurrentUserId() >> Optional.of("test-user-id")
