@@ -2,7 +2,7 @@ package cz.buben.learning.habits.habitservice.controller.habit;
 
 import cz.buben.learning.habits.common.dto.HabitDto;
 import cz.buben.learning.habits.habitservice.dto.CreateHabitDtoIn;
-import cz.buben.learning.habits.habitservice.model.habits.CreateHabit;
+import cz.buben.learning.habits.habitservice.model.habit.CreateHabit;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;

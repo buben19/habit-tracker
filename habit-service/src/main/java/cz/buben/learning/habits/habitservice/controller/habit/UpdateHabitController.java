@@ -2,7 +2,7 @@ package cz.buben.learning.habits.habitservice.controller.habit;
 
 import cz.buben.learning.habits.common.dto.HabitDto;
 import cz.buben.learning.habits.habitservice.dto.UpdateHabitDtoIn;
-import cz.buben.learning.habits.habitservice.model.habits.UpdateHabit;
+import cz.buben.learning.habits.habitservice.model.habit.UpdateHabit;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;

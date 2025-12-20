@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.habitservice.model.habits
+package cz.buben.learning.habits.habitservice.model.habit
 
 import cz.buben.learning.habits.common.dto.HabitDto
 import cz.buben.learning.habits.habitservice.domain.Habit

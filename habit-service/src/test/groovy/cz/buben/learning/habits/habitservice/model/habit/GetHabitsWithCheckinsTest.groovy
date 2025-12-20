@@ -1,4 +1,4 @@
-package cz.buben.learning.habits.habitservice.model.habits
+package cz.buben.learning.habits.habitservice.model.habit
 
 import cz.buben.learning.habits.common.dto.CheckinDto
 import cz.buben.learning.habits.common.dto.UserDto

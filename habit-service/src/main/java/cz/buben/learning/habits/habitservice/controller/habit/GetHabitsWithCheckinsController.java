@@ -1,7 +1,7 @@
 package cz.buben.learning.habits.habitservice.controller.habit;
 
 import cz.buben.learning.habits.common.dto.HabitsCompleteResponse;
-import cz.buben.learning.habits.habitservice.model.habits.GetHabitsWithCheckins;
+import cz.buben.learning.habits.habitservice.model.habit.GetHabitsWithCheckins;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
