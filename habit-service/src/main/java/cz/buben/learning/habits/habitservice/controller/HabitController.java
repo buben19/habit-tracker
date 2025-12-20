@@ -215,8 +215,8 @@ public class HabitController {
           )
       }
   )
-  @DeleteMapping
-  public void deleteHabitWithCheckins(Long id) {
+  @DeleteMapping("/with-checkins/{id}")
+  public void deleteHabitWithCheckins(@PathVariable Long id) {
     throw new UnsupportedOperationException("Not implemented yet");
   }
 }
