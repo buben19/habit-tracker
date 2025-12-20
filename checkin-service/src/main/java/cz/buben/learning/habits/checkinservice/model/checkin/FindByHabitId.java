@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class FindCheckinsByHabitId {
+public class FindByHabitId {
 
   private final CheckinRepository checkinRepository;
   private final CheckinMapper checkinMapper;

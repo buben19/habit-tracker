@@ -8,15 +8,15 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
 @SpringBootTest
-class FindCheckinsByHabitIdTest extends Specification {
+class FindByHabitIdTest extends Specification {
 
   @Autowired
   CheckinMapper checkinMapper
   CheckinRepository checkinRepository = Mock()
-  FindCheckinsByHabitId findCheckinsByByHabitId
+  FindByHabitId findCheckinsByByHabitId
 
   def setup() {
-    findCheckinsByByHabitId = new FindCheckinsByHabitId(
+    findCheckinsByByHabitId = new FindByHabitId(
         checkinRepository,
         checkinMapper
     )

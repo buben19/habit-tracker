@@ -16,9 +16,9 @@ import java.time.LocalDate;
 
 @Service
 @AllArgsConstructor
-public class CreateTodayCheckin {
+public class CreateToday {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(CreateTodayCheckin.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(CreateToday.class);
 
   private static final String TOPIC = "checkin";
 

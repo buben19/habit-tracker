@@ -1,6 +1,6 @@
 package cz.buben.learning.habits.checkinservice.controller.checkin;
 
-import cz.buben.learning.habits.checkinservice.model.checkin.CreateTodayCheckin;
+import cz.buben.learning.habits.checkinservice.model.checkin.CreateToday;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class CreateTodayForHabitController {
 
-  private final CreateTodayCheckin createTodayCheckin;
+  private final CreateToday createToday;
 
   @Operation(
       summary = "Create today's check-in for a habit",
@@ -22,6 +22,6 @@ public class CreateTodayForHabitController {
   )
   @PostMapping("/today/{habitId}")
   public CheckinDto createTodayCheckin(@PathVariable Long habitId) {
-    return createTodayCheckin.createTodayCheckin(habitId);
+    return createToday.createTodayCheckin(habitId);
   }
 }

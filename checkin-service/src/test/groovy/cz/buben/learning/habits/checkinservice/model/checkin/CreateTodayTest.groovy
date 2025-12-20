@@ -11,17 +11,17 @@ import org.springframework.kafka.core.KafkaTemplate
 import spock.lang.Specification
 
 @SpringBootTest
-class CreateTodayCheckinTest extends Specification {
+class CreateTodayTest extends Specification {
 
   @Autowired
   CheckinMapper checkinMapper
   CheckinRepository checkinRepository = Mock()
   UserIdProvider userIdProvider = Mock()
   KafkaTemplate<String, CheckinDto> kafkaTemplate = Mock()
-  CreateTodayCheckin createTodayCheckin
+  CreateToday createTodayCheckin
 
   def setup() {
-    createTodayCheckin = new CreateTodayCheckin(
+    createTodayCheckin = new CreateToday(
         checkinRepository,
         userIdProvider,
         checkinMapper,

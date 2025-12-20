@@ -1,6 +1,6 @@
 package cz.buben.learning.habits.checkinservice.controller.checkin;
 
-import cz.buben.learning.habits.checkinservice.model.checkin.FindCheckinsByHabitId;
+import cz.buben.learning.habits.checkinservice.model.checkin.FindByHabitId;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class FindByHabitIdController {
 
-  private final FindCheckinsByHabitId findCheckinsByHabitId;
+  private final FindByHabitId findByHabitId;
 
   @Operation(
       summary = "Find check-ins by habit ID",
@@ -24,6 +24,6 @@ public class FindByHabitIdController {
   )
   @GetMapping("/habit/{habitId}")
   public List<CheckinDto> findCheckinsByByHabitId(@PathVariable Long habitId) {
-    return findCheckinsByHabitId.findCheckinsByHabitId(habitId);
+    return findByHabitId.findCheckinsByHabitId(habitId);
   }
 }
