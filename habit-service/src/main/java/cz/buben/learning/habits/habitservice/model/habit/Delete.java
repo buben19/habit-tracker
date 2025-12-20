@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class DeleteHabit {
+public class Delete {
 
   private final HabitRepository habitRepository;
 

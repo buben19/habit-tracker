@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class UpdateHabit {
+public class Update {
 
   private final HabitRepository habitRepository;
   private final HabitMapper habitMapper;

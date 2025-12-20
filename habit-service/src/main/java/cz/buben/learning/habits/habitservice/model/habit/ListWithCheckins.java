@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class GetHabitsWithCheckins {
+public class ListWithCheckins {
 
   private final HabitRepository habitRepository;
   private final CheckinClient checkinClient;

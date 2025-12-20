@@ -1,7 +1,7 @@
 package cz.buben.learning.habits.habitservice.controller.habit;
 
 import cz.buben.learning.habits.common.dto.HabitDto;
-import cz.buben.learning.habits.habitservice.model.habit.GetHabit;
+import cz.buben.learning.habits.habitservice.model.habit.Get;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 @SecurityRequirement(name = "bearerAuth")
 @Tag(name = "Habits")
 @AllArgsConstructor
-public class GetHabitController {
+public class GetController {
 
-  private final GetHabit getHabit;
+  private final Get get;
 
   @Operation(
       summary = "Get habit by ID",
@@ -46,6 +46,6 @@ public class GetHabitController {
   )
   @GetMapping("/{id}")
   public HabitDto getHabit(@PathVariable Long id) {
-    return getHabit.get(id);
+    return get.get(id);
   }
 }

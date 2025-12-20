@@ -3,13 +3,13 @@ package cz.buben.learning.habits.habitservice.model.habit
 import cz.buben.learning.habits.habitservice.repository.HabitRepository
 import spock.lang.Specification
 
-class DeleteHabitTest extends Specification {
+class DeleteTest extends Specification {
 
   HabitRepository habitRepository = Mock()
-  DeleteHabit deleteHabit
+  Delete deleteHabit
 
   def setup() {
-    deleteHabit = new DeleteHabit(
+    deleteHabit = new Delete(
         habitRepository
     )
   }

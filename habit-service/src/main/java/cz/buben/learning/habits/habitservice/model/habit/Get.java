@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class GetHabit {
+public class Get {
 
   private final HabitRepository habitRepository;
   private final HabitMapper habitMapper;

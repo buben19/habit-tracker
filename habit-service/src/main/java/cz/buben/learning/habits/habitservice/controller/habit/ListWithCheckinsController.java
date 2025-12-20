@@ -1,7 +1,7 @@
 package cz.buben.learning.habits.habitservice.controller.habit;
 
-import cz.buben.learning.habits.common.dto.HabitDto;
-import cz.buben.learning.habits.habitservice.model.habit.GetAllHabits;
+import cz.buben.learning.habits.common.dto.HabitsCompleteResponse;
+import cz.buben.learning.habits.habitservice.model.habit.ListWithCheckins;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -11,23 +11,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/habits")
 @SecurityRequirement(name = "bearerAuth")
 @Tag(name = "Habits")
 @AllArgsConstructor
-public class GetAllHabitController {
+public class ListWithCheckinsController {
 
-  private final GetAllHabits getAllHabits;
+  private final ListWithCheckins listWithCheckins;
 
   @Operation(
-      summary = "Get all habits",
-      description = "Retrieve a list of all habits",
-      requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-          description = "No request body is needed for this operation"
-      ),
+      summary = "Get habits with check-ins",
+      description = "Retrieve habits along with their associated check-ins. Only habits for current user are returned.",
       responses = {
           @ApiResponse(
               responseCode = "200",
@@ -39,8 +34,8 @@ public class GetAllHabitController {
           )
       }
   )
-  @GetMapping
-  public List<HabitDto> getHabits() {
-    return getAllHabits.all();
+  @GetMapping("/with-checkins")
+  public HabitsCompleteResponse getHabitsWithCheckins() {
+    return listWithCheckins.getHabitsWithCheckins();
   }
 }

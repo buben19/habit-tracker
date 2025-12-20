@@ -9,15 +9,15 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
 @SpringBootTest
-class GetHabitTest extends Specification {
+class GetTest extends Specification {
 
   @Autowired
   HabitMapper habitMapper;
   HabitRepository habitRepository = Mock()
-  GetHabit getHabit
+  Get getHabit
 
   void setup() {
-    getHabit = new GetHabit(
+    getHabit = new Get(
         habitRepository,
         habitMapper
     )

@@ -11,15 +11,15 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
 @SpringBootTest
-class UpdateHabitTest extends Specification {
+class UpdateTest extends Specification {
 
   @Autowired
   HabitMapper habitMapper
   HabitRepository habitRepository = Mock()
-  UpdateHabit updateHabit
+  Update updateHabit
 
   void setup() {
-    updateHabit = new UpdateHabit(
+    updateHabit = new Update(
         habitRepository,
         habitMapper
     )

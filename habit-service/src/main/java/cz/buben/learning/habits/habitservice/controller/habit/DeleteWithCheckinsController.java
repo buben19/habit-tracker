@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SecurityRequirement(name = "bearerAuth")
 @Tag(name = "Habits")
 @AllArgsConstructor
-public class DeleteHabitWithCheckinsController {
+public class DeleteWithCheckinsController {
 
   @Operation(
       summary = "Delete habit with check-ins",

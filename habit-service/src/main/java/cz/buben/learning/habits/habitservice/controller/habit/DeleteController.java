@@ -1,6 +1,6 @@
 package cz.buben.learning.habits.habitservice.controller.habit;
 
-import cz.buben.learning.habits.habitservice.model.habit.DeleteHabit;
+import cz.buben.learning.habits.habitservice.model.habit.Delete;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 @SecurityRequirement(name = "bearerAuth")
 @Tag(name = "Habits")
 @AllArgsConstructor
-public class DeleteHabitController {
+public class DeleteController {
 
-  private final DeleteHabit deleteHabit;
+  private final Delete delete;
 
   @Operation(
       summary = "Delete a habit",
@@ -46,7 +46,7 @@ public class DeleteHabitController {
   )
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteHabit(@PathVariable Long id) {
-    deleteHabit.delete(id);
+    delete.delete(id);
     return ResponseEntity.noContent().build();
   }
 }

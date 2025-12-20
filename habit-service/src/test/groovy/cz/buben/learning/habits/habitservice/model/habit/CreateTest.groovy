@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
 @SpringBootTest
-class CreateHabitTest extends Specification {
+class CreateTest extends Specification {
 
   @Autowired
   HabitMapper habitMapper
@@ -20,10 +20,10 @@ class CreateHabitTest extends Specification {
   CreateHabitMapper createHabitMapper
   HabitRepository habitRepository = Mock()
   UserIdProvider userIdProvider = Mock()
-  CreateHabit createHabit
+  Create createHabit
 
   def setup() {
-    createHabit = new CreateHabit(
+    createHabit = new Create(
         habitRepository,
         userIdProvider,
         createHabitMapper,

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class CreateHabit {
+public class Create {
 
   private final HabitRepository habitRepository;
   private final UserIdProvider userIdProvider;

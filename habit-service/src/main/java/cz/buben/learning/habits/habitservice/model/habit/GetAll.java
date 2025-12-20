@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class GetAllHabits {
+public class GetAll {
 
   private final HabitRepository habitRepository;
   private final UserIdProvider userIdProvider;
