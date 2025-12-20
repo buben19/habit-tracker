@@ -119,6 +119,13 @@ public class HabitController {
   @Operation(
       summary = "Update an existing habit",
       description = "Update the details of an existing habit",
+      parameters = @Parameter(
+          name = "id",
+          in = ParameterIn.PATH,
+          description = "ID of the habit to update",
+          required = true,
+          example = "1"
+      ),
       requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
           content = @Content(
               mediaType = "application/json",
@@ -146,6 +153,7 @@ public class HabitController {
           )
       }
   )
+  // TODO: Habit ID!
   @PutMapping("/{id}")
   public ResponseEntity<HabitDto> updateHabit(@Valid @RequestBody UpdateHabitDtoIn habit) {
     HabitDto updatedHabit = updateHabit.update(habit);
