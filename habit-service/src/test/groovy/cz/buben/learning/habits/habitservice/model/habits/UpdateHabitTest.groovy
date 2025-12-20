@@ -5,7 +5,6 @@ import cz.buben.learning.habits.habitservice.domain.Habit
 import cz.buben.learning.habits.habitservice.domain.Schedule
 import cz.buben.learning.habits.habitservice.dto.UpdateHabitDtoIn
 import cz.buben.learning.habits.habitservice.mapping.HabitMapper
-import cz.buben.learning.habits.habitservice.mapping.UpdateHabitMapper
 import cz.buben.learning.habits.habitservice.repository.HabitRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -16,15 +15,12 @@ class UpdateHabitTest extends Specification {
 
   @Autowired
   HabitMapper habitMapper
-  @Autowired
-  UpdateHabitMapper updateHabitMapper
   HabitRepository habitRepository = Mock()
   UpdateHabit updateHabit
 
   void setup() {
     updateHabit = new UpdateHabit(
         habitRepository,
-        updateHabitMapper,
         habitMapper
     )
   }
@@ -32,14 +28,23 @@ class UpdateHabitTest extends Specification {
   def "update habit"() {
     given:
     def updateHabitDtoIn = UpdateHabitDtoIn.builder()
-        .id(1L)
         .name("Updated Habit Name")
         .description("Updated Description")
         .schedule(Schedule.DAILY)
         .build()
 
     when:
-    def habitDto = updateHabit.update(updateHabitDtoIn)
+    def habitDto = updateHabit.update(1L, updateHabitDtoIn)
+
+    then:
+    1 * habitRepository.findById(1L) >> Optional.of(
+        Habit.builder()
+            .id(1L)
+            .name("Old Habit Name")
+            .description("Old Description")
+            .schedule(Schedule.DAILY)
+            .build()
+    )
 
     then:
     1 * habitRepository.save(_ as Habit) >> { args ->

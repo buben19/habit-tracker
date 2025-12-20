@@ -21,13 +21,6 @@ import lombok.NoArgsConstructor;
 public class UpdateHabitDtoIn {
 
   @Schema(
-      description = "ID of the habit",
-      example = "1"
-  )
-  @NotNull(message = "ID is mandatory")
-  private Long id;
-
-  @Schema(
       description = "Name of the habit",
       example = "Morning Jog"
   )

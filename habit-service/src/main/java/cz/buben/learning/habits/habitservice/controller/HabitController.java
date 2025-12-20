@@ -153,10 +153,9 @@ public class HabitController {
           )
       }
   )
-  // TODO: Habit ID!
   @PutMapping("/{id}")
-  public ResponseEntity<HabitDto> updateHabit(@Valid @RequestBody UpdateHabitDtoIn habit) {
-    HabitDto updatedHabit = updateHabit.update(habit);
+  public ResponseEntity<HabitDto> updateHabit(@PathVariable Long id, @Valid @RequestBody UpdateHabitDtoIn habit) {
+    HabitDto updatedHabit = updateHabit.update(id, habit);
     return ResponseEntity.ok(updatedHabit);
   }
 
