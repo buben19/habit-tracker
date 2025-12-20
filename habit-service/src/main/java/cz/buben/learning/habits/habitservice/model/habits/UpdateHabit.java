@@ -21,11 +21,13 @@ public class UpdateHabit {
     Habit loaded = habitRepository.findById(id)
         .orElseThrow(() -> new IllegalArgumentException("Habit with id " + id + " not found"));
 
-    loaded.setName(updateHabitDtoIn.getName());
-    loaded.setDescription(updateHabitDtoIn.getDescription());
-    loaded.setSchedule(updateHabitDtoIn.getSchedule());
+    Habit build = loaded.toBuilder()
+        .name(updateHabitDtoIn.getName())
+        .description(updateHabitDtoIn.getDescription())
+        .schedule(updateHabitDtoIn.getSchedule())
+        .build();
 
-    Habit save = habitRepository.save(loaded);
+    Habit save = habitRepository.save(build);
     return habitMapper.entityToDto(save);
   }
 }
