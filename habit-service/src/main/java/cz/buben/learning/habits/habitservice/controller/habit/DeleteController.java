@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/habits")
 @SecurityRequirement(name = "bearerAuth")
-@Tag(name = "Habits")
+@Tag(name = "habit")
 @AllArgsConstructor
 public class DeleteController {
 

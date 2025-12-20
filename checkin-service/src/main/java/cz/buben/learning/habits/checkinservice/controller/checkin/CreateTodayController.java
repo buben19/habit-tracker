@@ -3,6 +3,7 @@ package cz.buben.learning.habits.checkinservice.controller.checkin;
 import cz.buben.learning.habits.checkinservice.model.checkin.Today;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@Tag(name = "checkin")
 @RequestMapping("/api/checkins")
 @AllArgsConstructor
 public class CreateTodayController {

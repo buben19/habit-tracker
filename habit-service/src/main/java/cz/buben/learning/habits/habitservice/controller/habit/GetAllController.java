@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/habits")
 @SecurityRequirement(name = "bearerAuth")
-@Tag(name = "Habits")
+@Tag(name = "habit")
 @AllArgsConstructor
 public class GetAllController {
 
