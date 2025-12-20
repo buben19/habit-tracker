@@ -15,7 +15,7 @@ import spock.lang.Specification
 import java.time.LocalDate
 
 @SpringBootTest
-class GetHabitWithCheckinsTest extends Specification {
+class GetHabitsWithCheckinsTest extends Specification {
 
   @Autowired
   HabitMapper habitMapper
@@ -23,21 +23,16 @@ class GetHabitWithCheckinsTest extends Specification {
   CheckinClient checkinClient = Mock()
   UserClient userClient = Mock()
   UserIdProvider userIdProvider = Mock()
-  GetHabitWithCheckins getHabitWithCheckins
+  GetHabitsWithCheckins getHabitWithCheckins
 
   def setup() {
-    getHabitWithCheckins = new GetHabitWithCheckins(
+    getHabitWithCheckins = new GetHabitsWithCheckins(
         habitRepository,
         checkinClient,
         userClient,
         userIdProvider,
         habitMapper
     )
-  }
-
-  def "context loads"() {
-    expect:
-    habitMapper
   }
 
   def "get habits with check-ins"() {
