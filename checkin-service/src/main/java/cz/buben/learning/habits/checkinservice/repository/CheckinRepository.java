@@ -12,4 +12,6 @@ public interface CheckinRepository extends JpaRepository<Checkin, Long> {
   List<Checkin> findByUserIdAndDay(String userId, LocalDate day);
 
   List<Checkin> findByHabitId(Long habitId);
+
+  int deleteByHabitId(Long habitId);
 }

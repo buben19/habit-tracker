@@ -1,5 +1,6 @@
 package cz.buben.learning.habits.checkinservice.controller.checkin;
 
+import cz.buben.learning.habits.checkinservice.model.checkin.Get;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class GetByIdController {
 
+  private final Get get;
+
   @Operation(
       summary = "Get check-in by ID",
       description = "Retrieve a specific check-in by its ID"
   )
   @GetMapping("/{id}")
   public CheckinDto getCheckinById(@PathVariable Long id) {
-    throw new UnsupportedOperationException("Not implemented yet");
+    return get.get(id);
   }
 }

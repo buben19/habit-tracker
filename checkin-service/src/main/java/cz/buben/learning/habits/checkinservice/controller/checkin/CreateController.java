@@ -1,5 +1,6 @@
 package cz.buben.learning.habits.checkinservice.controller.checkin;
 
+import cz.buben.learning.habits.checkinservice.dto.CheckinDtoIn;
 import cz.buben.learning.habits.checkinservice.model.checkin.Create;
 import cz.buben.learning.habits.common.dto.CheckinDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,7 +25,7 @@ public class CreateController {
       description = "Create a new check-in record"
   )
   @PostMapping
-  public CheckinDto create(@Valid @RequestBody CheckinDto checkin) {
-    return create.createCheckin(checkin);
+  public CheckinDto create(@Valid @RequestBody CheckinDtoIn checkinDtoIn) {
+    return create.createCheckin(checkinDtoIn);
   }
 }

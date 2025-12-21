@@ -1,6 +1,8 @@
 package cz.buben.learning.habits.checkinservice.model.checkin
 
 import cz.buben.learning.habits.checkinservice.domain.Checkin
+import cz.buben.learning.habits.checkinservice.dto.CheckinDtoIn
+import cz.buben.learning.habits.checkinservice.mapping.CheckinDtoInMapper
 import cz.buben.learning.habits.checkinservice.mapping.CheckinMapper
 import cz.buben.learning.habits.checkinservice.repository.CheckinRepository
 import cz.buben.learning.habits.common.dto.CheckinDto
@@ -14,6 +16,8 @@ class CreateTest extends Specification {
 
   @Autowired
   CheckinMapper checkinMapper
+  @Autowired
+  CheckinDtoInMapper checkinDtoInMapper
   CheckinRepository checkinRepository = Mock()
   KafkaTemplate<String, CheckinDto> kafkaTemplate = Mock()
   Create create
@@ -21,25 +25,21 @@ class CreateTest extends Specification {
   def setup() {
     create = new Create(
         checkinRepository,
+        checkinDtoInMapper,
         checkinMapper,
         kafkaTemplate
     )
   }
 
-  def "context loads"() {
-    expect:
-    checkinMapper
-  }
-
   def "creates checkin and sends event"() {
     given:
-    def dto = CheckinDto.builder()
+    def checkinDtoIn = CheckinDtoIn.builder()
         .habitId(1L)
         .userId("test-user-id")
         .build()
 
     when:
-    def checkinDto = create.createCheckin(dto)
+    def checkinDto = create.createCheckin(checkinDtoIn)
 
     then:
     1 * checkinRepository.save(_ as Checkin) >> { args ->
