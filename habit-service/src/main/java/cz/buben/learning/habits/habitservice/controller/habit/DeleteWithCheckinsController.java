@@ -1,5 +1,7 @@
 package cz.buben.learning.habits.habitservice.controller.habit;
 
+import cz.buben.learning.habits.habitservice.dto.DeleteHabitWithCheckinsDtoOut;
+import cz.buben.learning.habits.habitservice.model.habit.DeleteWithCheckins;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class DeleteWithCheckinsController {
 
+  private final DeleteWithCheckins deleteWithCheckins;
+
   @Operation(
       summary = "Delete habit with check-ins",
       description = "Delete a habit along with all its associated check-ins. Not implemented yet.",
@@ -27,8 +31,8 @@ public class DeleteWithCheckinsController {
           )
       }
   )
-  @DeleteMapping("/with-checkins/{id}")
-  public void deleteHabitWithCheckins(@PathVariable Long id) {
-    throw new UnsupportedOperationException("Not implemented yet");
+  @DeleteMapping("/with-checkins/{habitId}")
+  public DeleteHabitWithCheckinsDtoOut deleteHabitWithCheckins(@PathVariable Long habitId) {
+    return deleteWithCheckins.deleteWithCheckins(habitId);
   }
 }

@@ -28,6 +28,14 @@ export default function HabitTable() {
     console.log("Checkin response: ", JSON.stringify(checkinResponse));
   }
 
+  async function deleteHabit(habitId: number) {
+    const deleteResponse = await apiFetch(`/habits/with-checkins/${habitId}`, token, {
+      method: "DELETE",
+    });
+    fetchHabits();
+    console.log("Delete response: ", JSON.stringify(deleteResponse));
+  }
+
   return (
     <Table striped bordered hover>
       <thead>
@@ -53,7 +61,7 @@ export default function HabitTable() {
                 <div className="d-inline-flex gap-2">
                   <Button variant="success" size="sm" onClick={ () => mark(habit.habit.id) }><i className="bi bi-check-lg"></i></Button>
                   <Button variant="secondary" size="sm"><i className="bi bi-pencil-fill"></i></Button>
-                  <Button variant="danger" size="sm"><i className="bi bi-trash-fill"></i></Button>
+                  <Button variant="danger" size="sm" onClick={ () => deleteHabit(habit.habit.id) }><i className="bi bi-trash-fill"></i></Button>
                 </div>
               </td>
             </tr>

@@ -1,8 +1,7 @@
-package cz.buben.learning.habits.checkinservice.dto;
+package cz.buben.learning.habits.common.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Builder;import lombok.Data;
 
 @Data
 @Builder

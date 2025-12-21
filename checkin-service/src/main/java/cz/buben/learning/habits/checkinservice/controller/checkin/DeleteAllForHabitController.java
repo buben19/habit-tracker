@@ -1,6 +1,6 @@
 package cz.buben.learning.habits.checkinservice.controller.checkin;
 
-import cz.buben.learning.habits.checkinservice.dto.DeleteCheckinDtoOut;
+import cz.buben.learning.habits.common.dto.DeleteCheckinDtoOut;
 import cz.buben.learning.habits.checkinservice.model.checkin.DeleteAllForHabit;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -4,6 +4,7 @@ import cz.buben.learning.habits.checkinservice.domain.Checkin;
 import cz.buben.learning.habits.checkinservice.mapping.CheckinMapper;
 import cz.buben.learning.habits.checkinservice.repository.CheckinRepository;
 import cz.buben.learning.habits.common.dto.CheckinDto;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ public class Get {
   private final CheckinRepository checkinRepository;
   private final CheckinMapper checkinMapper;
 
+  @Transactional
   public CheckinDto get(Long id) {
     Checkin checkin = checkinRepository.findById(id).orElseThrow(
         () -> new RuntimeException("Checkin not found"));
