@@ -4,7 +4,7 @@ Content-Type: application/json
 Authorization: Bearer {{$auth.token("habit")}}
 
 ###
-GET http://localhost:8888/admin/realms/habit-realm/users/c25bab39-814d-4c44-a861-90360ffb88ca
+GET http://localhost:8888/admin/realms/habit-realm/users/424c72c7-8e21-4479-9c20-a06c8def8949
 Content-Type: application/json
 Authorization: Bearer {{$auth.token("habit")}}
 

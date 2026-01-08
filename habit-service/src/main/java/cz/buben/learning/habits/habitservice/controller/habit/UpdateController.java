@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -63,6 +64,7 @@ public class UpdateController {
       }
   )
   @PutMapping("/{id}")
+  @PreAuthorize("hasRole('client_user')")
   public ResponseEntity<HabitDto> updateHabit(@PathVariable Long id, @Valid @RequestBody UpdateHabitDtoIn habit) {
     HabitDto updatedHabit = update.update(id, habit);
     return ResponseEntity.ok(updatedHabit);
