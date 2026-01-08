@@ -80,7 +80,7 @@ public class ListWithCheckins {
                     try {
                       return entry.getValue().get();
                     } catch (Exception e) {
-                      throw new RuntimeException("Failed to get checkins for habit id: " + entry.getKey(), e);
+                      throw new RuntimeException("Failed to get check-ins for habit id: " + entry.getKey(), e);
                     }
                   }
               )
